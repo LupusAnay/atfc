@@ -85,10 +85,6 @@ file = "config/patchouli-client.toml"
 hash = "37f6a9b53c5ed0114c8539256f0222be96abff36a8f4b162d259073f4bc1879d"
 
 [[files]]
-file = "config/radium.properties"
-hash = "da9371a03dd302fbd12b31ba9df48f837c57aed71fb79461e8d627a84ae3480a"
-
-[[files]]
 file = "config/rubidium-mixins.properties"
 hash = "66bbef3dd895941e28db52d85ef5e8a1ecda6dc26377a47ff6dc623ece2f73fa"
 
@@ -7596,11 +7592,6 @@ metafile = true
 [[files]]
 file = "mods/patchouli.pw.toml"
 hash = "ae4c3617170709ac560c8113f1526193e79750735d12bbc2d5119f518b866799"
-metafile = true
-
-[[files]]
-file = "mods/radium-reforged.pw.toml"
-hash = "7e7f52b898a62041d50f7ae2d9b1b639aabc1facd23f23795e99bf210574f9b1"
 metafile = true
 
 [[files]]
