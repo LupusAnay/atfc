@@ -80,7 +80,7 @@ git push
 make deploy
 ```
 
-This runs `git pull --ff-only` in `~/minecraft/atfc/` and then `./server/update.sh`. The update stops the service, synchronizes Packwiz with the server-side selection, and starts the service only after a successful sync.
+This runs `git pull --ff-only` in `~/minecraft/atfc/` and then `./server/update.sh`. The update stops the service, synchronizes Packwiz with the server-side selection, clears stale systemd start-limit state, and starts the service only after a successful sync. On the server itself, use `git pull --ff-only && make update`.
 
 ## Local administration
 
@@ -106,6 +106,7 @@ make say MSG='Server restart in five minutes'
 make cmd CMD='weather clear'
 make save
 make stop
+make update
 make status
 make logs
 make log

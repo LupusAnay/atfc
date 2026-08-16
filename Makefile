@@ -9,13 +9,14 @@ RCON_PASS_FILE ?= $(RUNTIME)/.rcon_pass
 -include $(RCON_PASS_FILE)
 RCON_BASE := "$(RCON_CLIENT)" "$(RCON_ADDR)" rcon "$(RCON_PASS)"
 
-.PHONY: help refresh client install deploy rcon-check rcon list say cmd save stop restart status logs log
+.PHONY: help refresh client install update deploy rcon-check rcon list say cmd save stop restart status logs log
 
 help:
 	@printf '%s\n' \
 	  'make refresh  Refresh pack/index.toml with Packwiz.' \
 	  'make client   Build dist/atfc-prism.zip.' \
 	  'make install  Install the server runtime from this checkout.' \
+	  'make update   Synchronize and restart the local server.' \
 	  'make deploy   Pull and update the server through SSH alias atfc.' \
 	  'make rcon     Open an interactive local RCON console.' \
 	  'make list     List online players.' \
@@ -36,6 +37,9 @@ client:
 
 install:
 	JAVA_BIN="$(JAVA_BIN)" ./server/install.sh
+
+update:
+	JAVA_BIN="$(JAVA_BIN)" ./server/update.sh
 
 deploy:
 	ssh atfc 'cd "$$HOME/minecraft/atfc" && git pull --ff-only && ./server/update.sh'
