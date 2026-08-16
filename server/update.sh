@@ -27,7 +27,6 @@ verify_sha256() {
 [[ "$PACK_URL" == https://* || "$PACK_URL" == http://* ]] || fail 'PACK_URL must start with http:// or https://'
 [[ "$PACK_URL" != *YOUR_GITHUB_OWNER* && "$PACK_URL" != *YOUR_REPOSITORY* ]] || fail 'Configure PACK_URL in pack.env before updating.'
 
-require_command install
 runtime="$ROOT/server/runtime"
 if [[ -r "$runtime/java.env" ]]; then
   # shellcheck disable=SC1090
@@ -51,6 +50,7 @@ unit="$HOME/.config/systemd/user/minecraft-atfc.service"
 mkdir -p "$(dirname "$unit")"
 ln -sfn "$ROOT/server/minecraft-atfc.service" "$unit"
 systemctl --user daemon-reload
+systemctl --user reset-failed minecraft-atfc.service
 
 if systemctl --user is-active --quiet minecraft-atfc.service; then
   printf '%s\n' 'Stopping minecraft-atfc.service...'
