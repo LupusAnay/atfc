@@ -2,7 +2,7 @@ hash-format = "sha256"
 
 [[files]]
 file = "config/DistantHorizons.toml"
-hash = "e315b91333d8f294e88f43bcef119df6841880a302cc63762d56527167b2aa66"
+hash = "4f90baff932ad32ebb5d726c145019c112a1afb2fb2a739ccd0fef48d87ab449"
 
 [[files]]
 file = "config/atfc/config.json"

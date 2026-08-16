@@ -1,10 +1,10 @@
-# Auto-TFC normal DH distant-generation baseline.
+# Auto-TFC DH internal-server distant-generation baseline.
 # This is the default DH mode for the pinned 3.2.0-b build.
 _version = 4
 
 [common.worldGenerator]
 enableDistantGeneration = true
-distantGeneratorMode = "FEATURES"
+distantGeneratorMode = "INTERNAL_SERVER"
 
 [server]
 enableServerGeneration = true
