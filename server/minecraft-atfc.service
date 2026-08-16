@@ -5,8 +5,8 @@ After=network-online.target
 
 [Service]
 Type=simple
-WorkingDirectory=%h/minecraft/servers/atfc
-ExecStart=/bin/bash %h/minecraft/servers/atfc/run.sh nogui
+WorkingDirectory=%h/minecraft/atfc/server/runtime
+ExecStart=/bin/bash %h/minecraft/atfc/server/runtime/run.sh nogui
 KillSignal=SIGINT
 TimeoutStopSec=120
 SuccessExitStatus=0 130

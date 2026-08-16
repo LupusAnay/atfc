@@ -22,6 +22,22 @@ verify_sha256() {
   [[ "$actual" == "$expected" ]] || fail "Checksum mismatch for $file"
 }
 
+render_template() {
+  local input=$1
+  local output=$2
+  local line
+
+  [[ -f "$input" ]] || fail "Missing template: $input"
+  : > "$output"
+  while IFS= read -r line || [[ -n "$line" ]]; do
+    line=${line//@SERVER_DISPLAY_NAME@/$SERVER_DISPLAY_NAME}
+    line=${line//@SERVER_PORT@/$SERVER_PORT}
+    line=${line//@SERVER_MIN_MEMORY@/$SERVER_MIN_MEMORY}
+    line=${line//@SERVER_MAX_MEMORY@/$SERVER_MAX_MEMORY}
+    printf '%s\n' "$line" >> "$output"
+  done < "$input"
+}
+
 : "${PACK_URL:?pack.env must define PACK_URL}"
 : "${PACKWIZ_BOOTSTRAP_URL:?pack.env must define PACKWIZ_BOOTSTRAP_URL}"
 : "${PACKWIZ_BOOTSTRAP_SHA256:?pack.env must define PACKWIZ_BOOTSTRAP_SHA256}"
@@ -43,7 +59,7 @@ require_command "$JAVA_BIN"
 java_version=$({ "$JAVA_BIN" -version 2>&1 || true; } | awk -F '"' '/version/ {print $2; exit}')
 [[ "$java_version" == 17.* ]] || fail "Java 17 is required. Found: ${java_version:-unknown}. Set JAVA_BIN to a Java 17 executable."
 
-runtime="$HOME/minecraft/servers/atfc"
+runtime="$ROOT/server/runtime"
 mkdir -p "$runtime"
 
 bootstrap="$runtime/packwiz-installer-bootstrap.jar"
@@ -60,67 +76,11 @@ else
 fi
 
 if [[ ! -s "$runtime/server.properties" ]]; then
-  cat > "$runtime/server.properties" <<EOF
-#Minecraft server properties
-allow-flight=false
-allow-nether=true
-broadcast-console-to-ops=true
-broadcast-rcon-to-ops=true
-difficulty=normal
-enable-command-block=false
-enable-jmx-monitoring=false
-enable-query=false
-enable-rcon=false
-enable-status=true
-entity-broadcast-range-percentage=100
-force-gamemode=false
-function-permission-level=2
-gamemode=survival
-generate-structures=true
-generator-settings={}
-hardcore=false
-level-name=world
-level-seed=
-level-type=tfc\\:tng
-max-chained-neighbor-updates=1000000
-max-players=5
-max-tick-time=60000
-max-world-size=29999984
-motd=$SERVER_DISPLAY_NAME
-network-compression-threshold=256
-online-mode=true
-op-permission-level=4
-player-idle-timeout=0
-pvp=true
-query.port=$SERVER_PORT
-rate-limit=0
-rcon.password=
-rcon.port=25575
-resource-pack=
-resource-pack-prompt=
-resource-pack-sha1=
-server-ip=
-server-port=$SERVER_PORT
-simulation-distance=8
-snooper-enabled=false
-spawn-animals=true
-spawn-monsters=true
-spawn-npcs=true
-spawn-protection=0
-sync-chunk-writes=true
-text-filtering-config=
-use-native-transport=true
-view-distance=10
-white-list=true
-EOF
+  render_template "$ROOT/server/server.properties.example" "$runtime/server.properties"
 fi
 
-if [[ ! -f "$runtime/user_jvm_args.txt" ]]; then
-  cat > "$runtime/user_jvm_args.txt" <<EOF
-# Operator-managed after installation.
--Xms$SERVER_MIN_MEMORY
--Xmx$SERVER_MAX_MEMORY
-EOF
+if [[ ! -s "$runtime/user_jvm_args.txt" ]]; then
+  render_template "$ROOT/server/user_jvm_args.txt.example" "$runtime/user_jvm_args.txt"
 fi
 
 printf '%s\n' 'Synchronizing the server Packwiz subset...'

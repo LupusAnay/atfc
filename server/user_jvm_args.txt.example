@@ -1,0 +1,3 @@
+# Operator-managed after installation.
+-Xms@SERVER_MIN_MEMORY@
+-Xmx@SERVER_MAX_MEMORY@

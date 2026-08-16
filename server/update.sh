@@ -35,7 +35,7 @@ require_command "$JAVA_BIN"
 java_version=$({ "$JAVA_BIN" -version 2>&1 || true; } | awk -F '"' '/version/ {print $2; exit}')
 [[ "$java_version" == 17.* ]] || fail "Java 17 is required. Found: ${java_version:-unknown}. Set JAVA_BIN to a Java 17 executable."
 
-runtime="$HOME/minecraft/servers/atfc"
+runtime="$ROOT/server/runtime"
 [[ -f "$runtime/run.sh" ]] || fail "Forge run.sh is missing. Run ./server/install.sh first."
 bootstrap="$runtime/packwiz-installer-bootstrap.jar"
 [[ -f "$bootstrap" ]] || fail "Missing $bootstrap. Run ./server/install.sh first."

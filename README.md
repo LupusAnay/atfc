@@ -48,7 +48,7 @@ git push
 
 ## Server install
 
-The server checkout and mutable Minecraft runtime are separate:
+The Git checkout owns the management scripts. Its ignored mutable runtime is `server/runtime/`:
 
 ```bash
 cd ~/minecraft
@@ -57,9 +57,9 @@ cd atfc
 make install
 ```
 
-The runtime is `~/minecraft/servers/atfc/`. The installer creates it, installs Forge if needed, synchronizes the server Packwiz subset, creates missing `server.properties` and `user_jvm_args.txt`, and enables the user service. It does not accept the EULA or start Minecraft.
+The runtime is `~/minecraft/atfc/server/runtime/`. The installer creates it, installs Forge if needed, synchronizes the server Packwiz subset, renders the tracked example files only when their runtime copies are missing or empty, and enables the user service. It does not accept the EULA or start Minecraft.
 
-Create `~/minecraft/servers/atfc/eula.txt` with `eula=true` after reading Mojang's EULA, then start the service:
+Create `~/minecraft/atfc/server/runtime/eula.txt` with `eula=true` after reading Mojang's EULA, then start the service:
 
 ```bash
 systemctl --user start minecraft-atfc.service
