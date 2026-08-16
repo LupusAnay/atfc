@@ -1,0 +1,26 @@
+{
+  "name": "Potion Making",
+  "category": "patchouli:create_integration",
+  "icon": "minecraft:potion",
+  "pages": [
+    {
+      "type": "text",
+      "text": "In ATFC potion-effects are implemented through the power of $(#F0F)Alcohol!$()$(br2)Automatic potion creation requires the use of both $(thing)Barrels$() and Create machinery, which is why it is recommended to read $(l:patchouli:create_integration/barrel_automation)Barrel Automation$() before designing your setup.$(br2)Alcohols are mixed with powders in order to be turned$(br)   into potions."
+    },
+    {
+      "type": "text",
+      "text": "$(br)Alcohols come in three strengths:$(br2)$(l)Normal Beverages$() which have no effect,$(br2)$(l)Formulated Beverages$() which provide level 1 potion effects,$(br2)$(l)Alchemical Beverages$() which provide level 2 effects.$(br2)$(br)The recipes to create these fluids can be found in JEI."
+    },
+    {
+      "type": "text",
+      "text": "$(thing)Spouts$() can be used to automatically fill jugs with beverages.$(br)$(l)Formulated$() and $(l)Alchemical$() beverages can also be spouted into $(thing)Glass Bottles$() in order to create $(thing)Splash Potions$().$(br2)$(l)Formulated Beverages$()$(br)last 4:00 min,$(br)$(l)Formulated Splash Potions$()$(br)last 3:00 min,$(br)$(l)Alchemical Beverages$()$(br)last 2:00 min,$(br)$(l)Alchemical Splash Potions$()$(br)last 1:30 min."
+    },
+    {
+      "type": "text",
+      "title": "Key",
+      "text": "$(br)$(l)$(#c39e36)Beer$()$() - Speed$(br2)$(l)$(#b0ae31)Cider$()$() - Jump Boost$(br2)$(l)$(#6e0122)Rum$()$() - Strength$()$(br2)$(l)$(#b7d9bb)Sake$()$() - Regeneration$()$(br2)$(l)$(#dcdcdb)Vodka$()$() - Absorbtion$()$(br2)$(l)$(#583718)Whiskey$()$(), $(l)$(#d9c7b6)Corn Whiskey$()$(),$(br)$(l)$(#c77d50)Rye Whiskey$()$() - Haste$()"
+    }
+  ],
+  "read_by_default": true,
+  "sortnum": 11
+}

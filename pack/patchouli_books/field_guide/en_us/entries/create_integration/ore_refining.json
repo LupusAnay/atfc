@@ -1,0 +1,31 @@
+{
+  "name": "Ore Refining",
+  "category": "patchouli:create_integration",
+  "icon": "create:crushed_raw_gold",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "As with most automation modpacks, AutoTerraFirmaCraft includes crushed ores, which provide a way to effectively double one's ores. Crushed ores are too big to fit inside vessels, so must be melted in a $(l:mechanics/charcoal_forge)Charcoal Forge$() or $(l:mechanics/crucible)Crucible$().$(br2)To $(thing)Alloy$() in a $(thing)Charcoal Forge$(), place a vessel in the top right slot and ores will melt into it."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "create:crushed_raw_copper",
+      "title": "",
+      "text": "Crushed ores are all worth 100mb, and can be produced with a $(thing)Millstone$() or $(thing)Crusher$().$(br2)Ores have a (2 x mb value)% chance of yielding a crushed ore when processed.$(br2)Some crushed ores are also used in the production of $(l:patchouli:create_integration/igneous_alloy)Igneous Alloy$()."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "tfc:deposit/native_gold/gabbro",
+      "title": "Deposit Refining",
+      "text": "Deposits can be refined in a Millstone or Crusher to produce a relevant small ore 90% of the time.$(br2)Unlike with ore crushing, this process has few downsides, though it's worth noting that $(thing)Cut Gems$() cannot be aquired this way."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "tfc:ore/diamond",
+      "title": "Raw Gem Refining",
+      "text": "Raw Gems can be converted both to $(thing)Gem Powders$() and $(thing)Cut Gems$() using Crushers or Querns and Millstones respectively."
+    }
+  ],
+  "read_by_default": true,
+  "sortnum": 2
+}

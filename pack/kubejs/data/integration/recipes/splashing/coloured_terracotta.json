@@ -1,0 +1,13 @@
+{
+  "type": "create:splashing",
+  "ingredients": [
+    {
+      "tag": "tfc:colored_terracotta"
+    }
+  ],
+  "results": [
+    {
+      "item": "minecraft:white_terracotta"
+    }
+  ]
+}

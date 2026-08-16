@@ -1,0 +1,28 @@
+{
+  "name": "Everlasting Food",
+  "category": "patchouli:create_integration",
+  "icon": "create:sweet_roll",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "ATFC implements three food items that will never rot, allowing for better industrialisation of food production.$(br2)These foods will always stack, unlike others which are limited by different expiration dates. They can also be mass-produced and stored without worrying about waste."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "create:sweet_roll",
+      "text": "The most basic of the three is the $(thing)Sweet Roll$(). While all three require machinery in order to be automated, Sweet Rolls can be crafted using only Copper Age machines.$(br2)However, they only provide two nutritional groups ($(thing)Grain$() and $(thing)Dairy$()) rather than three."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "minecraft:pumpkin_pie",
+      "text": "$(thing)Pumpkin Pie$() is harder to craft, requiring Iron Age technology to automate, along with semi-valuable resources like $(thing)Sugar$() and $(thing)Eggs$().$(br2)Pumpkin Pie provides $(thing)Grain$(), $(thing)Vegetables$() and $(thing)Fruit$() as nutrition."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "kubejs:bone_broth",
+      "text": "$(thing)Bone Broth$() is made in a heated Mixer and requires both $(thing)Milk$() and $(thing)Water$() to craft, along with any 2 vegetables and $(thing)Bones$().$(br2)Bone Broth provides $(thing)Vegetables$(), $(thing)Protein$() and $(thing)Dairy$() as nutrition."
+    }
+  ],
+  "read_by_default": true,
+  "sortnum": 9
+}

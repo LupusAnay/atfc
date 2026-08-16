@@ -1,0 +1,13 @@
+name = "Antique Atlas"
+filename = "antiqueatlas-7.1.1-forge-mc1.18.2.jar"
+side = "both"
+
+[download]
+url = "https://cdn.modrinth.com/data/wHODup9j/versions/BCw9xqwD/antiqueatlas-7.1.1-forge-mc1.18.2.jar"
+hash-format = "sha512"
+hash = "5a41d3a9810c5b1789862dd920edd1eff3a00a1df8688d95cf2bf08e444fe6f72b1b47bc8c43991b16fabd6d377c3551f82d8db1bdc1292e3c51eb147f6d8999"
+
+[update]
+[update.modrinth]
+mod-id = "wHODup9j"
+version = "BCw9xqwD"

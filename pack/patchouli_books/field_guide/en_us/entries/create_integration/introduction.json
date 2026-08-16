@@ -1,0 +1,38 @@
+{
+  "name": "Introduction",
+  "category": "patchouli:create_integration",
+  "icon": "create:schematic_and_quill",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "$(thing)AutoTerraFirmaCraft$() is a modpack focused on integrating Create into TFC in such a way that the two mods' progression systems naturally complement each other without sacrificing the realistic, low-tech feel of base TFC.$(br2)In service of this certain elements of Create have been changed; $(thing)Blaze Burners$() for instance have been reworked$(br)   into $(l:patchouli:create_integration/coal_forges)Coal Forges$()."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "This modpack has been designed with the aim of requiring both mods' structures to automate successfully.$(br2)For this reason while Heated Basin Recipes are available, metals can only be melted down in a $(thing)Forge$() or $(thing)Crucible$().$(br2)Those liquids could then be automatically piped into Basins and cast, or filled into molds by a Spout.$(br2)All TFC structures can be automated in this pack."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(br)Many crafting recipes have been changed in order to guide the gameplay progression of the player.$(br)This is accomplished through the use of $(thing)over 1000 JSON files!$()$(br2)A few Create blocks are available in the Copper Age.$(br2)Most are available from the Iron Age onwards.$(br2)The most advanced however will$(br)   require Steel."
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "create:crafting/kinetics/windmill_bearing",
+      "text": "$(thing)Windmill Bearings$() are a good example of the integration of the two mods, requiring both TFC and Create processes to build."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(br)While the recipe for $(thing)Water Wheels$() has not changed, the scarcity of buckets necessitates the use of $(l:mechanics/aqueducts)Aqueducts$().$(br2)As a result early game machinery must be built near water."
+    },
+    {
+      "type": "patchouli:image",
+      "images": [
+        "kubejs:textures/patchouli/aqueduct_example.png"
+      ],
+      "text": "Water Wheels fed via Aqueduct",
+      "border": true
+    }
+  ],
+  "read_by_default": true,
+  "sortnum": 0
+}

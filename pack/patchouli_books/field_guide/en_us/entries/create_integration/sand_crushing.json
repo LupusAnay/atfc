@@ -1,0 +1,55 @@
+{
+  "name": "Trace Elements",
+  "category": "patchouli:create_integration",
+  "icon": "tfc:powder/kaolinite",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "Like in normal Create, cobble can be crushed into gravel which can be crushed into sand. Unlike in normal Create, each TFC sand type can be further crushed for a chance to receive a $(thing)Trace Element$().$(br2)$(br2)$(thing)White Sand$() can be refined from Granite, Diorite, Chalk, Rhyolite, Dacite and Marble."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(thing)Brown Sand$() from Conglomerate, Gabbro, Slate and Gneiss.$(br2)$(thing)Black Sand$() from Shale, Dolomite, Basalt and Andesite.$(br2)$(thing)Yellow Sand$() from Claystone and Limestone.$(br2)$(thing)Red Sand$() from Chert and Phyllite.$(br2)$(thing)Green Sand$() from Schist.$(br2)$(thing)Pink Sand$() from Quartzite."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "tfc:sand/white",
+      "text": "White Sand can be crushed into $(thing)Saltpeter$(), which can be used to produce Gunpowder, milled into Salt or used as a fertilizer."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "tfc:sand/brown",
+      "text": "Brown Sand can be crushed into $(thing)Sulfur$(), used solely for the production of Gunpowder."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "tfc:sand/black",
+      "text": "Black Sand can be crushed into $(thing)Coke Powder$(), used in $(l:patchouli:create_integration/charcoal_upgrading)Charcoal Upgrading$().",
+      "anchor": "black_sand"
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "tfc:sand/yellow",
+      "text": "Yellow Sand can be crushed into $(thing)Glowstone Dust$(), used to make various everlasting light sources."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "tfc:sand/red",
+      "title": "Red Sand",
+      "text": "Red sand can be crushed into $(thing)Redstone Dust$(), a necessary component in the production of $(thing)Rose Quartz.$()"
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "tfc:sand/green",
+      "text": "Green Sand can be crushed into $(thing)Guano$(), which is a powerful fertilizer and required for the production of many stone types.",
+      "anchor": "green_sand"
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "tfc:sand/pink",
+      "text": "Pink Sand can be crushed into $(thing)Kaolinite Powder$(), used to make $(thing)Fire CLay$(). It is also used in $(l:patchouli:create_integration/potion_making)Potion Making$().$(br2)Only being obtainable from $(thing)Quartzite Rock$(), Kaolinite is the rarest Trace Element."
+    }
+  ],
+  "read_by_default": true,
+  "sortnum": 7
+}

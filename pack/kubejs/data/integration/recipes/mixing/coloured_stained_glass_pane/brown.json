@@ -1,0 +1,19 @@
+{
+  "type": "create:mixing",
+  "ingredients": [
+    {
+      "item": "minecraft:white_stained_glass_pane"
+    },
+    {
+      "fluid": "tfc:brown_dye",
+      "nbt": {},
+      "amount": 25
+    }
+  ],
+  "results": [
+    {
+      "item": "minecraft:brown_stained_glass_pane"
+    }
+  ],
+  "processingTime": 25
+}

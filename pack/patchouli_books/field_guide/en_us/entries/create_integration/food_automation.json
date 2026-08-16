@@ -1,0 +1,41 @@
+{
+  "name": "Food Automation",
+  "category": "patchouli:create_integration",
+  "icon": "create:mechanical_harvester",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "To ensure a steady supply of food it is beneficial to set up some method of automated food production.$(br2)This can range from automated harvesting to food processing and storage, or all in combination."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "create:mechanical_harvester",
+      "title": "Mechanical Harvesters",
+      "text": "One of the simplest automation methods simply uses a rotary arm of Mechanical Harvesters.$(br2)These take advantage of the fact that harvesters will only cut down fully-grown crops, ensuring that none rot in the fields without destroying the half-grown crops."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "minecraft:lava_bucket",
+      "title": "Temperature Control",
+      "text": "Different crops need different temperature ranges to grow in, and these can be difficult to satisfy year-round with the changing seasons.$(br2)Fortunately, as elevation decreases the ambient temperature becomes more and more stable; first decreasing, then increasing up to about 15c at the bottom of the world."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(br)Using this, crop planting, growth and harvesting can be fully automated year-round using deployers to plant said crops."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "tfc:wool",
+      "title": "Livestock",
+      "text": "Animals can be farmed automatically in this modpack as well as plants. A simple example of such is auto-shearing a sheep for $(thing)Wool$().$(br2)$(thing)Deployers$() are used for almost every part of the livestock automation process, be it shearing, milking or breeding animals."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "tfc:food/barley_grain",
+      "title": "Familiarising & Breeding",
+      "text": "Animals are both familiarised and bred by feeding them foods from their respective food groups.$(br2)Each animal can only breed once its familiarity level is above 30%.$(br)$(thing)Deployers$() can both raise familiarity and induce animals to mate."
+    }
+  ],
+  "read_by_default": true,
+  "sortnum": 10
+}

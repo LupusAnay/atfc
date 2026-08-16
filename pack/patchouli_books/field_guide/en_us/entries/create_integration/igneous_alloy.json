@@ -1,0 +1,28 @@
+{
+  "name": "Igneous Alloy",
+  "category": "patchouli:create_integration",
+  "icon": "create:andesite_alloy",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "In AutoTerraFirmaCraft $(thing)Andesite Alloy$() has been renamed to $(thing)Igneous$() to better reflect the item's new recipe.$(br2)Rather than requiring Andesite rock specifically, Igneous Alloy can instead be made from any $(l:the_world/geology#igneous_extrusive)Igneous Rock$().$(br2)Related names have also been changed e.g. $(thing)Igneous Casing$()."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "create:andesite_alloy",
+      "text": "Igneous Alloy can be made from combining any four $(thing)Magma Blocks$() and two Crushed Iron, Zinc or Nickel Ore in a $(thing)Mechanical Mixer$().",
+      "link_recipe": true
+    },
+    {
+      "type": "tfc:heat_recipe",
+      "recipe": "integration:heating/rock/andesite",
+      "text": "Magma Blocks can be made by heating any $(l:the_world/geology#igneous_extrusive)Igneous Rock$() or found naturally near $(thing)Volcanoes$().$(br2)Magma will also burn infinitely and thus can also be used with the $(thing)Encased Fan$() for bulk baking."
+    },
+    {
+      "type":"patchouli:text",
+      "text": "$(br)It's worth noting that in TFC lava-water generators will always produce a raw Igneous Rock type."
+    }
+  ],
+  "read_by_default": true,
+  "sortnum": 3
+}

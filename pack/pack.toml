@@ -1,0 +1,14 @@
+name = "Auto-TFC Private"
+author = "Private server operators"
+version = "1.0.0"
+description = "Auto-TerraFirmaCraft 1.11.1 with shared Distant Horizons, Antique Atlas, and small private-server QoL."
+pack-format = "packwiz:1.1.0"
+
+[index]
+file = "index.toml"
+hash-format = "sha256"
+hash = "682d9644e3d5119d58796e8419b3d59c1ba7770c396ca1dddcc28fe72e6312a8"
+
+[versions]
+forge = "40.2.9"
+minecraft = "1.18.2"

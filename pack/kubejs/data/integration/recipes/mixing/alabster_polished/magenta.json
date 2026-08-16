@@ -1,0 +1,19 @@
+{
+  "type": "create:mixing",
+  "ingredients": [
+    {
+      "item": "tfc:alabaster/polished"
+    },
+    {
+      "fluid": "tfc:magenta_dye",
+      "nbt": {},
+      "amount": 25
+    }
+  ],
+  "results": [
+    {
+      "item": "tfc:alabaster/polished/magenta"
+    }
+  ],
+  "processingTime": 25
+}

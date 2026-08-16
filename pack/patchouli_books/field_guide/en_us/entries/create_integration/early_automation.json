@@ -1,0 +1,37 @@
+{
+  "name": "Early-Game Automation",
+  "category": "patchouli:create_integration",
+  "icon": "create:millstone",
+  "pages": [
+    {
+      "type": "text",
+      "text": "Though most create machinery requires Iron-Age technology or beyond to produce, a few choice blocks are available in the Copper Age.$(br2)The five mutative blocks available before the Iron Age are the $(thing)Millstone$(),$(br)$(thing)Item Drain$() and $(thing)Spout$(),$(br)$(thing)Mechanical Crafter$(),$(br)and $(thing)Deployer$().$(br)Mutative blocks are ones which$(br)   convert inputs into outputs."
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "create:crafting/kinetics/millstone",
+      "text": "The $(thing)Millstone$() is easily the most valuable of these blocks. It is crucial for the automation of many tasks before the $(thing)Crushing Wheel$() is available, and enables $(l:patchouli:create_integration/ore_refining)Ore Refining$(), allowing huge amounts of resources to be saved."
+    },
+    {
+      "type": "text",
+      "text": "$(br)The $(thing)Item Drain$() and $(thing)Spout$() represent inputs and ouptuts in a fluid piping system and require $(thing)Mechanical Pumps$(), which are also available in the Copper Age.$(br2)Used in combination, these two blocks can be used in the early game for things like producing everlasting food in the form of $(l:patchouli:create_integration/everlasting_food)Sweet Rolls$()."
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "create:crafting/kinetics/item_drain",
+      "recipe2": "create:crafting/kinetics/spout"
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "create:crafting/kinetics/mechanical_crafter",
+      "text": "The $(thing)Mechanical Crafter$() can be used to automate many menial tasks, but sometimes Brass can be difficult to acquire in the early game.$(br)Crafters may also need a $(thing)Wrench$() in order to be calibrated properly."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "create:deployer",
+      "text": "A $(thing)Copper Anvil$() is required to produce the necessary $(thing)Brass Double Ingots$() used to make $(thing)Deployers$(), but the investment can be worth it early on.$(br2)They can be used to automate feeding, milking and shearing of animals, in addition to their various recipes shown in JEI. This strategy may work best in combination with Force-Loading."
+    }
+  ],
+  "read_by_default": true,
+  "sortnum": 1
+}

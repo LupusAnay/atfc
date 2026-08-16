@@ -1,0 +1,17 @@
+{
+  "name": "Cobble Sorting",
+  "category": "patchouli:create_integration",
+  "icon": "tfc:ore/small_cassiterite",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "Every cobblestone variant can be washed ($(thing)Encased Fan$() behind Water) for a chance to produce various small ore pieces native to that rock type.$(br2)Only $(thing)Metal$() and $(thing)Redstone$() ores can be found in this manner, with ore yield rates relative to the commonality of the ore in the rock type.$(br2)$(l:the_world/ores_and_minerals)More information on ores here.$()"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(l:the_world/geology#igneous_extrusive)Igneous Intrusive$() rocks yield Native Gold, Native Silver, Cassiterite, Bismuthinite, Garnierite, Cinnabar and Cryolite.$(br2)$(l:the_world/geology#igneous_extrusive)Igneous Extrusive$() rocks yield Native Copper, Native Gold and Hematite.$(br2)$(l:the_world/geology#sedimentary)Metamorphic$() rocks yield Tetrahedrite, Malachite, Sphalerite and Native Silver.$(br2)$(l:the_world/geology#sedimentary)Sedimentary$() rocks yield Malachite, Bismuthinite, Magnetite and Limonite."
+    }
+  ],
+  "read_by_default": true,
+  "sortnum": 6
+}

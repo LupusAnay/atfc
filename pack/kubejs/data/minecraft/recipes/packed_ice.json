@@ -1,0 +1,35 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+      {
+        "item": "tfc:ice_pile"
+      },
+      {
+        "item": "tfc:ice_pile"
+      },
+      {
+        "item": "tfc:ice_pile"
+      },
+      {
+        "item": "tfc:ice_pile"
+      },
+      {
+        "item": "tfc:ice_pile"
+      },
+      {
+        "item": "tfc:ice_pile"
+      },
+      {
+        "item": "tfc:ice_pile"
+      },
+      {
+        "item": "tfc:ice_pile"
+      },
+      {
+        "item": "tfc:ice_pile"
+      }
+    ],
+    "result": {
+      "item": "minecraft:packed_ice"
+    }
+}

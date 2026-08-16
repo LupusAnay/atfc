@@ -1,0 +1,13 @@
+{
+    "type": "create:splashing",
+    "ingredients": [
+      {
+        "item": "tfc:ice_pile"
+      }
+    ],
+    "results": [
+      {
+        "item": "minecraft:packed_ice"
+      }
+    ]
+}

@@ -1,0 +1,7 @@
+{
+    "comment1": "overrides default tfc mob spawning, allowing mobs to spawn on any full block. Use this if you want to encourage farms",
+    "expandedMobSpawning": true,
+
+    "comment2": "allows thatch beds to be made using medium hides rather than just large. Recommended for large servers where players may set up homes far from spawn",
+    "mediumHideBeds": false
+}

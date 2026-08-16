@@ -1,0 +1,19 @@
+{
+  "type": "create:mixing",
+  "ingredients": [
+    {
+      "item": "minecraft:white_carpet"
+    },
+    {
+      "fluid": "tfc:green_dye",
+      "nbt": {},
+      "amount": 25
+    }
+  ],
+  "results": [
+    {
+      "item": "minecraft:green_carpet"
+    }
+  ],
+  "processingTime": 25
+}

@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "item": "dynamical_compass:dynamical_compass"
+  },
+  "result": "tfc:metal/ingot/gold",
+  "experience": 1.0,
+  "cookingtime": 200
+}

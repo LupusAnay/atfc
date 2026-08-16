@@ -1,0 +1,19 @@
+{
+  "type": "create:mixing",
+  "ingredients": [
+    {
+      "item": "tfc:alabaster/bricks"
+    },
+    {
+      "fluid": "tfc:purple_dye",
+      "nbt": {},
+      "amount": 25
+    }
+  ],
+  "results": [
+    {
+      "item": "tfc:alabaster/bricks/purple"
+    }
+  ],
+  "processingTime": 25
+}

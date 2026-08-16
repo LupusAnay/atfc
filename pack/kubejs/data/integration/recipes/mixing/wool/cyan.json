@@ -1,0 +1,19 @@
+{
+  "type": "create:mixing",
+  "ingredients": [
+    {
+      "item": "minecraft:white_wool"
+    },
+    {
+      "fluid": "tfc:cyan_dye",
+      "nbt": {},
+      "amount": 25
+    }
+  ],
+  "results": [
+    {
+      "item": "minecraft:cyan_wool"
+    }
+  ],
+  "processingTime": 25
+}

@@ -1,0 +1,19 @@
+{
+  "type": "create:mixing",
+  "ingredients": [
+    {
+      "item": "tfc:alabaster/raw"
+    },
+    {
+      "fluid": "tfc:magenta_dye",
+      "nbt": {},
+      "amount": 25
+    }
+  ],
+  "results": [
+    {
+      "item": "tfc:alabaster/raw/magenta"
+    }
+  ],
+  "processingTime": 25
+}

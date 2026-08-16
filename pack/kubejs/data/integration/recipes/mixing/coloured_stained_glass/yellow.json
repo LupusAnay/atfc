@@ -1,0 +1,19 @@
+{
+  "type": "create:mixing",
+  "ingredients": [
+    {
+      "item": "minecraft:white_stained_glass"
+    },
+    {
+      "fluid": "tfc:yellow_dye",
+      "nbt": {},
+      "amount": 25
+    }
+  ],
+  "results": [
+    {
+      "item": "minecraft:yellow_stained_glass"
+    }
+  ],
+  "processingTime": 25
+}

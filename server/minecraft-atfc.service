@@ -1,0 +1,17 @@
+[Unit]
+Description=Auto-TerraFirmaCraft private Minecraft server
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=simple
+WorkingDirectory=%h/minecraft/servers/atfc
+ExecStart=/bin/bash %h/minecraft/servers/atfc/run.sh nogui
+KillSignal=SIGINT
+TimeoutStopSec=120
+SuccessExitStatus=0 130
+Restart=on-failure
+RestartSec=20
+
+[Install]
+WantedBy=default.target

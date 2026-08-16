@@ -1,0 +1,6 @@
+dist/*
+!dist/.gitkeep
+
+.DS_Store
+.idea/
+.vscode/

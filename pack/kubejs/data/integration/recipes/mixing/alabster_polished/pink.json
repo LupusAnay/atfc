@@ -1,0 +1,19 @@
+{
+  "type": "create:mixing",
+  "ingredients": [
+    {
+      "item": "tfc:alabaster/polished"
+    },
+    {
+      "fluid": "tfc:pink_dye",
+      "nbt": {},
+      "amount": 25
+    }
+  ],
+  "results": [
+    {
+      "item": "tfc:alabaster/polished/pink"
+    }
+  ],
+  "processingTime": 25
+}

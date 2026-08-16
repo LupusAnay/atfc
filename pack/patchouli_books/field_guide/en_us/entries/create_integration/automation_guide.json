@@ -1,0 +1,216 @@
+{
+  "name": "Advanced Automation Guide",
+  "category": "patchouli:create_integration",
+  "icon": "tfc:bloomery",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "title": "Forge Automation",
+      "text": "To encourage the use of $(thing)Crucibles$(), only the fuelling of forges can be automated. This can be done by simply dropping any coal item onto the forge block. Waterstreams or $(thing)Encased Fans$() can acheive this, even when there is a Crucible above the forge.$(br2)A $(thing)Deployer$() with $(thing)Flint and Steel$() or a $(thing)Firestarter$() can be used to light the forge."
+    },
+    {
+      "type": "patchouli:multiblock",
+      "multiblock": {
+        "pattern": [
+          [
+            " E ",
+            "   ",
+            "   ",
+            " 0 ",
+            "   "
+          ],
+          [
+            " R ",
+            " R ",
+            "RRR",
+            "RFR",
+            "RRR"
+          ]
+        ],
+        "mapping": {
+          "0": "tfc:crucible",
+          "F": "tfc:charcoal_forge[heat_level=7]",
+          "R": "tfc:rock/bricks/granite",
+          "E": "create:encased_fan[facing=east]"
+        }
+      },
+      "name": "Forge Auto-Fuelling",
+      "text": "Alloying automation uses the $(thing)Crucible$(), solid item heating uses $(thing)Encased Fans$() behind fire or lava.",
+      "enable_visualize": false
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Molten metal can be inserted into a $(thing)Crucible$() from the top, and extracted from the side. $(thing)Smart Fluid Pipes$() can whitelist specific fluids, allowing safe alloying in the Crucible.$(br2)Once extracted, molten metal can be stored in $(thing)Fluid Tanks$() or casted into molds using a $(thing)Spout$().$(br2)Only molten metal can be inserted into a Crucible."
+    },
+    {
+      "type": "patchouli:multiblock",
+      "multiblock": {
+        "pattern": [
+          [
+            "    ",
+            " V  ",
+            "    "
+          ],
+          [
+            "    ",
+            " 0PB",
+            "    "
+          ],
+          [
+            "RRR ",
+            "RFRV",
+            "RRR "
+          ]
+        ],
+        "mapping": {
+          "0": "tfc:crucible",
+          "F": "tfc:charcoal_forge[heat_level=7]",
+          "R": "tfc:rock/bricks/granite",
+          "P": "create:fluid_pipe[up=false, down=false, east=false, west=false]",
+          "B": "create:fluid_pipe[up=false, south=false, east=false, west=false]",
+          "V": "create:fluid_pipe[north=false, south=false, east=false, west=false]"
+        }
+      },
+      "name": "Crucible Piping",
+      "text": "Pipes require $(thing)Mechanical Pumps$() to move fluids.",
+      "enable_visualize": false
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Crucible storage is seperated into two parts; a 3x3 of slots \"inventory\" section and an output slot which can fill molds.$(br2)The inventory section cannot be extracted from, only inserted into from the top. It is therefore only useful for heating items that can be melted. The output slot can be inserted into and extracted from from the side.$(br2)A $(thing)Brass Funnel$() and $(thing)Filter$() can     be used to specify outputs."
+    },
+    {
+      "type": "patchouli:multiblock",
+      "multiblock": {
+        "pattern": [
+          [
+            "   ",
+            " 0 ",
+            "   "
+          ],
+          [
+            "   ",
+            " CI",
+            " O "
+          ],
+          [
+            "RRR",
+            "RFR",
+            "RRR"
+          ]
+        ],
+        "mapping": {
+          "C": "tfc:crucible",
+          "F": "tfc:charcoal_forge[heat_level=7]",
+          "R": "tfc:rock/bricks/granite",
+          "0": "create:andesite_funnel[facing=up, extracting=false]",
+          "I": "create:andesite_funnel[facing=south, extracting=false]",
+          "O": "create:andesite_funnel[facing=east, extracting=true]"
+        }
+      },
+      "name": "Crucible Funneling",
+      "text": "$(thing)Encased Fans$() can be used to pull/push items into funnels. Waterstreams and $(thing)Mechanical Arms$() can also insert items.",
+      "enable_visualize": false
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Bloomeries are one of the harder TFC structures to automate because $(#f00)Mechanical Drills cannot mine Iron Blooms$().$(br2)They require a $(thing)Deployer$() with a pickaxe to mine them. This works best from the underside of the Bloomery as horizontal Deployers can miss the lowest layers of the bloom. A $(thing)Deployer$() is also needed to light the Bloomery.$(br2)$(l:mechanics/bloomery)More info on Bloomeries here$()"
+    },
+    {
+      "type": "patchouli:multiblock",
+      "multiblock": {
+        "pattern": [
+          [
+            " R ",
+            "R R",
+            " R "
+          ],
+          [
+            " R ",
+            "R R",
+            " R "
+          ],
+          [
+            " R ",
+            "R0R",
+            "RBR"
+          ],
+          [
+            " R ",
+            "R R",
+            " R "
+          ]
+        ],
+        "mapping": {
+          "R": "tfc:rock/bricks/granite",
+          "B": "tfc:bloomery[facing=east]"
+        }
+      },
+      "name": "Bloomery",
+      "text": "When mined, bloom items will pop out of the front of the Bloomery.",
+      "enable_visualize": false
+    },
+    {
+      "type": "patchouli:text",
+      "text": "The $(thing)Blast Furnace$() is significantly easier to automate than the $(thing)Bloomery$(), furthermore any item that requires $(thing)Wrought Iron$() to craft can also be made with $(thing)Steel$().$(br2)Just like with the Bloomery, relevant items can be dropped in from the top, however the $(thing)Molten Pig Iron$() produced can be freely extracted from the $(thing)Blast Furnace$() or collection block beneath via $(thing)Fluid Pipes$().$(br2)$(thing)Basins$() work as well as $(thing)          Crucibles$() for collection."
+    },
+    {
+      "type": "patchouli:multiblock",
+      "multiblock": {
+        "pattern": [
+          [
+            " R ",
+            "R R",
+            " R "
+          ],
+          [
+            " R ",
+            "R R",
+            " R "
+          ],
+          [
+            " L ",
+            " 03",
+            "   "
+          ],
+          [
+            "   ",
+            " B2",
+            " 1 "
+          ],
+          [
+            "   ",
+            "   ",
+            " 2 "
+          ]
+        ],
+        "mapping": {
+          "R": "tfc:fire_bricks",
+          "0": "tfc:blast_furnace",
+          "L": "tfc:bellows[facing=east]",
+          "B": "create:basin",
+          "1": "create:fluid_pipe[north=false, south=false, up=false, east=false]",
+          "2": "create:fluid_pipe[north=false, south=false, east=false, west=false]",
+          
+          "3": "create:fluid_pipe[south=false, up=false, east=false, west=false]"
+        }
+      },
+      "name": "Blast Furnace",
+      "text": "$(thing)Deployers$() are needed to light the furnace and pump the $(thing)Bellows$().",
+      "enable_visualize": false
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "minecraft:charcoal",
+      "title": "Charcoal Automation",
+      "text": "Charcoal can either be produced through the $(l:mechanics/charcoal_pit)traditional method$() or by burning logs to $(thing)Wood Ash$() using an $(thing)Encased Fan$() behind fire and then sifting the ash using a fan behind water.$(br2)The latter method is easier to automate but gives a poorer charcoal return per log."
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "create:crafting/appliances/tree_fertilizer",
+      "text": "Any tree can be instantly grown using Tree Fertilizer, the cutting of which is best done by a $(thing)Mechanical Saw$() if not manually.$(br2)The ingredients will require a mob farm to be built to automate effectively."
+    }
+  ],
+  "read_by_default": true,
+  "sortnum": 13
+}

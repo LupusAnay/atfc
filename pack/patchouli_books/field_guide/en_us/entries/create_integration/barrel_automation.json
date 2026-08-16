@@ -1,0 +1,98 @@
+{
+  "name": "Barrel Automation",
+  "category": "patchouli:create_integration",
+  "icon": "tfc:wood/barrel/spruce",
+  "pages": [
+    {
+      "type": "text",
+      "text": "Some recipes in $(thing)AutoTerraFirmaCraft$() are only available using $(thing)Barrels$(), primarily $(l:patchouli:create_integration/potion_making)Potion Making$().$(br2)Items and fluids can only be inserted or extracted while a $(thing)Barrel$() is unsealed, but non-instant recipes can only occur while sealed.$(br2)Redstone signals can be used to control sealing/unsealing."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "create:stockpile_switch",
+      "title": "Recipe Completion",
+      "text": "To properly automate $(thing)Barrels$() it is necessary to detect recipe completion, so that items can be extracted and new ingredients inserted.$(br2)$(thing)Threshold Switches$() are recommended for this purpose, though $(thing)Daylight Detectors$() and $(thing)Clockwork Bearings$() can work too depending on the recipe. $(#f00)Smart Observers will not work!$()"
+    },
+    {
+      "type": "text",
+      "text": "$(br)On the right is shown a template for Barrel-Automation using $(thing)Funnels$().$(br2)Solid ingedients can be inserted through the top while buckets containing relevant fluids can be inserted and extracted through the sides.$(br2)Solid items can be extracted from the bottom. A $(thing)Brass Funnel$() with filter is recommended for this so as to only extract recipe outputs."
+    },
+    {
+      "type": "patchouli:multiblock",
+      "multiblock": {
+        "pattern": [
+          [
+            " ",
+            "D",
+            " "
+          ],
+          [
+            "F",
+            "0",
+            "G"
+          ],
+          [
+            " ",
+            "B",
+            " "
+          ]
+        ],
+        "mapping": {
+          "0": "tfc:wood/barrel/acacia",
+          "F": "create:andesite_funnel[facing=west]",
+          "G": "create:andesite_funnel[facing=east, extracting=true]",
+          "D": "create:andesite_funnel[facing=up]",
+          "B": "create:brass_funnel[facing=down, extracting=true]"
+        }
+      },
+      "name": "Item In/Outputs",
+      "enable_visualize": false
+    },
+    {
+      "type": "text",
+      "text": "$(br)Fluids can be inserted into $(thing)Barrels$() using pipes. They can be inserted through the top and extracted from the bottom.$(br2)In the case of of horizontal barrels, fluids must be inserted from the back and extracted from the front.$(br)When layed horizontally, $(thing)Barrels$() can also ouput fluids into relevant receptacles as shown."
+    },
+    {
+      "type": "patchouli:multiblock",
+      "multiblock": {
+        "pattern": [
+          [
+            "S  ",
+            "   ",
+            " QP"
+          ],
+          [
+            "TB ",
+            "   ",
+            " A "
+          ],
+          [
+            " GC",
+            " 0 ",
+            "PR "
+          ]
+        ],
+        "mapping": {
+          "0": "tfc:rock/bricks/granite_slab[type=top]",
+          "G": "tfc:rock/bricks/granite_slab[type=top]",
+
+          "A": "tfc:wood/barrel/acacia",
+          "B": "tfc:wood/barrel/acacia[facing=south]",
+          "C": "create:basin",
+
+          "P": "create:fluid_pipe[down=false, up=false, east=false, west=false]",
+          "Q": "create:fluid_pipe[up=false, north=false, east=false, west=false]",
+          "R": "create:fluid_pipe[down=false, south=false, east=false, west=false]",
+
+          "S": "create:fluid_pipe[north=false, south=false, east=false, west=false]",
+          "T": "create:fluid_pipe[down=false, north=false, east=false, west=false]"
+        }
+      },
+      "name": "Fluid In/Outputs",
+      "text": "",
+      "enable_visualize": false
+    }
+  ],
+  "read_by_default": true,
+  "sortnum": 12
+}

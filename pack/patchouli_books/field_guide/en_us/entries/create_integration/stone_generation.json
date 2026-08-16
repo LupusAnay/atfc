@@ -1,0 +1,27 @@
+{
+  "name": "Generating Stone",
+  "category": "patchouli:create_integration",
+  "icon": "tfc:rock/raw/rhyolite",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "The easiest way to make stone in ATFC is with a $(thing)Lava-Water Generator$(). This can produce a limitless amount of stone at no cost other than the initial construction.$(br2)This method can only produce $(thing)Rhyolite$() and $(thing)Gabbro$() however, thus lacking the ability to produce various $(l:patchouli:create_integration/cobble_sorting)Ore Products$() and $(l:patchouli:create_integration/sand_crushing)Trace Elements$()."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "minecraft:lava_bucket",
+      "title": "Lava/Water Interaction",
+      "text": "$(thing)Gabbro$() rock is created when lava falls onto a Water Source block, and the source block has either a block or another source block beneath it.$(br2)All other interactions will produce $(thing)Rhyolite$() or $(thing)Obsidian$() if the Lava Source block is converted."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "It is possible to produce all other stone types by compacting 4 dirt into 4 cobblestone using a $(thing)Heated Mechanical Press$().$(br2)Different types of stone can be created from different combinations of dirt.$(br2)In order to automate stone production it is therefore neccessary to automate dirt production."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Sand can be processed into Dirt in a $(thing)Mechanical Mixer$() with the addition of three ingredients:$(br)$(li)Fertiliser and/or Minerals$()$(li)A Clay Ball$()$(li)Water$()$(br2)Different Dirt types require different Fertilisers such as $(thing)Saltpeter$(), $(thing)Bone Meal$() and $(l:patchouli:create_integration/sand_crushing#green_sand)Guano$().$(br2)Dirt can be Mixed into mud and Milled in order to receive a $(thing)'Clay Profit'$() of 1 Clay Ball per 8 dirt." 
+    }
+  ],
+  "read_by_default": true,
+  "sortnum": 8
+}

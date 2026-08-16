@@ -1,0 +1,19 @@
+{
+  "type": "create:mixing",
+  "ingredients": [
+    {
+      "item": "tfc:aggregate"
+    },
+    {
+      "fluid": "tfc:green_dye",
+      "nbt": {},
+      "amount": 25
+    }
+  ],
+  "results": [
+    {
+      "item": "minecraft:green_concrete_powder"
+    }
+  ],
+  "processingTime": 25
+}

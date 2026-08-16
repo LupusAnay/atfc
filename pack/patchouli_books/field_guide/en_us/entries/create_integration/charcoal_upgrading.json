@@ -1,0 +1,43 @@
+{
+  "name": "Charcoal Upgrading",
+  "category": "patchouli:create_integration",
+  "icon": "minecraft:charcoal",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "The roles of $(thing)Lignite$() and $(thing)Bituminous Coal$() have been expanded in AutoTerraFirmaCraft, with both now being usable as fuel in $(l:mechanics/bloomery)Bloomeries$() and $(l:mechanics/blast_furnace)Blast Furnaces$().$(br2)As the title would suggest, charcoal can be converted to $(thing)Lignite$() which can be converted to $(thing)Bituminous Coal$().$(br2)$(l:mechanics/charcoal_pit)Info on making Charcoal here.$()"
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "minecraft:coal",
+      "title": "Lignite from Coal Block",
+      "text": "Blocks of Coal can be produced in a $(thing)Mechanical Press$() by compacting eight Charcoal and one $(thing)Peat$()."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "minecraft:charcoal",
+      "text": "$(thing)Burn Time: 108 seconds$()$(br2)The Charcoal -> Lignite process converts 8 Charcoal into 9 Lignite"
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "tfc:ore/lignite",
+      "text": "$(thing)Burn Time: 132 seconds$()$(br2)This represents a total conversion of $(thing)864s -> 1188s$(), an increase of 37.5%.",
+      "link_recipe": true
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "tfc:ore/bituminous_coal",
+      "text": "Bituminous Coal burns much $(thing)Hotter$() than Lignite. Using it to fuel a $(l:mechanics/charcoal_forge)Charcoal Forge$() can completely negate the need to use $(thing)Bellows$(). Using it to fuel a $(l:mechanics/blast_furnace)Blast Furnace$() can negate the use of $(thing)Bellows$() and a $(thing)Tuyere$().$(br2)Combining 3 Lignite and 2 $(l:patchouli:create_integration/sand_crushing#black_sand)Coke Powder$() in a $(thing)Mechanical Mixer$() will produce 3 Bituminous Coal.",
+      "anchor": "bituminous_coal",
+      "link_recipe": true
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "create:blaze_burner",
+      "title": "Coal Forges",
+      "text": "Bituminous Coal can also be used $(thing)Superheat$() a $(l:patchouli:create_integration/coal_forges)Coal Forge$().$(br2)This will allow it to reach the highest temperatures for Basin Recipes or Boiler Heating."
+    }
+  ],
+  "read_by_default": true,
+  "sortnum": 4
+}
