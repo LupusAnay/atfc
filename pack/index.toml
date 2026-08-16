@@ -7614,11 +7614,6 @@ hash = "43375678708cd812b22ab1ecbc3f5452bc0910bac6f544c69f9ccf8bd14d420f"
 metafile = true
 
 [[files]]
-file = "mods/rubidium.pw.toml"
-hash = "677339e3009ce3baf939f026be93885fe243369537dd55f3816a25c91940af17"
-metafile = true
-
-[[files]]
 file = "mods/starlight-forge.pw.toml"
 hash = "cf0274e0db473a80ea8d8442362d3e7e76639018504b9ff37fa61aa6044b8a60"
 metafile = true
