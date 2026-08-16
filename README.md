@@ -54,7 +54,7 @@ The server checkout and mutable Minecraft runtime are separate:
 cd ~/minecraft
 git clone <repo-url> atfc
 cd atfc
-./server/install.sh
+make install
 ```
 
 The runtime is `~/minecraft/servers/atfc/`. The installer creates it, installs Forge if needed, synchronizes the server Packwiz subset, creates missing `server.properties` and `user_jvm_args.txt`, and enables the user service. It does not accept the EULA or start Minecraft.
