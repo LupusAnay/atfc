@@ -82,8 +82,33 @@ make deploy
 
 This runs `git pull --ff-only` in `~/minecraft/atfc/` and then `./server/update.sh`. The update stops the service, synchronizes Packwiz with the server-side selection, and starts the service only after a successful sync.
 
+## Local administration
+
+RCON is operator-managed. If it is enabled in the runtime `server.properties`, create the ignored password file:
+
 ```bash
+printf '%s\n' 'RCON_PASS=replace-this' > server/runtime/.rcon_pass
+chmod 600 server/runtime/.rcon_pass
+```
+
+The default RCON client is `mcli`. Override it when the client lives elsewhere:
+
+```bash
+make RCON_CLIENT="$HOME/path/to/mcli" list
+```
+
+Available commands:
+
+```bash
+make rcon
+make list
+make say MSG='Server restart in five minutes'
+make cmd CMD='weather clear'
+make save
+make stop
+make status
 make logs
+make log
 make restart
 ```
 
