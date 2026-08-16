@@ -59,20 +59,59 @@ else
   verify_sha256 "$PACKWIZ_BOOTSTRAP_SHA256" "$bootstrap"
 fi
 
-if [[ ! -f "$runtime/server.properties" ]]; then
+if [[ ! -s "$runtime/server.properties" ]]; then
   cat > "$runtime/server.properties" <<EOF
-motd=$SERVER_DISPLAY_NAME
-server-port=$SERVER_PORT
-online-mode=true
-white-list=true
-max-players=5
-view-distance=10
-simulation-distance=8
-level-type=tfc\\:tng
-generate-structures=true
-spawn-protection=0
-pvp=true
+#Minecraft server properties
+allow-flight=false
+allow-nether=true
+broadcast-console-to-ops=true
+broadcast-rcon-to-ops=true
+difficulty=normal
 enable-command-block=false
+enable-jmx-monitoring=false
+enable-query=false
+enable-rcon=false
+enable-status=true
+entity-broadcast-range-percentage=100
+force-gamemode=false
+function-permission-level=2
+gamemode=survival
+generate-structures=true
+generator-settings={}
+hardcore=false
+level-name=world
+level-seed=
+level-type=tfc\\:tng
+max-chained-neighbor-updates=1000000
+max-players=5
+max-tick-time=60000
+max-world-size=29999984
+motd=$SERVER_DISPLAY_NAME
+network-compression-threshold=256
+online-mode=true
+op-permission-level=4
+player-idle-timeout=0
+pvp=true
+query.port=$SERVER_PORT
+rate-limit=0
+rcon.password=
+rcon.port=25575
+resource-pack=
+resource-pack-prompt=
+resource-pack-sha1=
+server-ip=
+server-port=$SERVER_PORT
+simulation-distance=8
+snooper-enabled=false
+spawn-animals=true
+spawn-monsters=true
+spawn-npcs=true
+spawn-protection=0
+sync-chunk-writes=true
+text-filtering-config=
+use-native-transport=true
+view-distance=10
+white-list=true
 EOF
 fi
 
