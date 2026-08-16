@@ -2,6 +2,8 @@
 Description=Auto-TerraFirmaCraft private Minecraft server
 Wants=network-online.target
 After=network-online.target
+StartLimitIntervalSec=30min
+StartLimitBurst=5
 
 [Service]
 Type=simple
@@ -12,7 +14,7 @@ KillSignal=SIGINT
 TimeoutStopSec=120
 SuccessExitStatus=0 130
 Restart=on-failure
-RestartSec=20
+RestartSec=60
 
 [Install]
 WantedBy=default.target
