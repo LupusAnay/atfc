@@ -119,7 +119,8 @@ if [[ ! -f "$runtime/run.sh" ]]; then
 fi
 
 unit="$HOME/.config/systemd/user/minecraft-atfc.service"
-install -D -m 0644 "$ROOT/server/minecraft-atfc.service" "$unit"
+mkdir -p "$(dirname "$unit")"
+ln -sfn "$ROOT/server/minecraft-atfc.service" "$unit"
 systemctl --user daemon-reload
 systemctl --user enable minecraft-atfc.service
 

@@ -34,7 +34,6 @@ if [[ -r "$runtime/java.env" ]]; then
   source "$runtime/java.env"
 fi
 
-require_command install
 require_command readlink
 require_command systemctl
 require_command sha256sum
@@ -48,7 +47,9 @@ bootstrap="$runtime/packwiz-installer-bootstrap.jar"
 [[ -f "$bootstrap" ]] || fail "Missing $bootstrap. Run ./server/install.sh first."
 verify_sha256 "$PACKWIZ_BOOTSTRAP_SHA256" "$bootstrap"
 
-install -D -m 0644 "$ROOT/server/minecraft-atfc.service" "$HOME/.config/systemd/user/minecraft-atfc.service"
+unit="$HOME/.config/systemd/user/minecraft-atfc.service"
+mkdir -p "$(dirname "$unit")"
+ln -sfn "$ROOT/server/minecraft-atfc.service" "$unit"
 systemctl --user daemon-reload
 
 if systemctl --user is-active --quiet minecraft-atfc.service; then
