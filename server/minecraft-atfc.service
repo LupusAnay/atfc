@@ -5,6 +5,7 @@ After=network-online.target
 
 [Service]
 Type=simple
+EnvironmentFile=-%h/minecraft/atfc/server/runtime/java.env
 WorkingDirectory=%h/minecraft/atfc/server/runtime
 ExecStart=/bin/bash %h/minecraft/atfc/server/runtime/run.sh nogui
 KillSignal=SIGINT

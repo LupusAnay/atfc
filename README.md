@@ -54,10 +54,10 @@ The Git checkout owns the management scripts. Its ignored mutable runtime is `se
 cd ~/minecraft
 git clone <repo-url> atfc
 cd atfc
-make install
+JAVA_BIN=/usr/lib/jvm/java-17-openjdk-amd64/bin/java make install
 ```
 
-The runtime is `~/minecraft/atfc/server/runtime/`. The installer creates it, installs Forge if needed, synchronizes the server Packwiz subset, renders the tracked example files only when their runtime copies are missing or empty, and enables the user service. It does not accept the EULA or start Minecraft.
+The runtime is `~/minecraft/atfc/server/runtime/`. The installer creates it, records the selected Java runtime in `java.env`, installs Forge if needed, synchronizes the server Packwiz subset, renders the tracked example files only when their runtime copies are missing or empty, and enables the user service. It does not accept the EULA or start Minecraft.
 
 Create `~/minecraft/atfc/server/runtime/eula.txt` with `eula=true` after reading Mojang's EULA, then start the service:
 

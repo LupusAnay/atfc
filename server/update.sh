@@ -28,6 +28,14 @@ verify_sha256() {
 [[ "$PACK_URL" != *YOUR_GITHUB_OWNER* && "$PACK_URL" != *YOUR_REPOSITORY* ]] || fail 'Configure PACK_URL in pack.env before updating.'
 
 require_command install
+runtime="$ROOT/server/runtime"
+if [[ -r "$runtime/java.env" ]]; then
+  # shellcheck disable=SC1090
+  source "$runtime/java.env"
+fi
+
+require_command install
+require_command readlink
 require_command systemctl
 require_command sha256sum
 JAVA_BIN=${JAVA_BIN:-java}
@@ -35,7 +43,6 @@ require_command "$JAVA_BIN"
 java_version=$({ "$JAVA_BIN" -version 2>&1 || true; } | awk -F '"' '/version/ {print $2; exit}')
 [[ "$java_version" == 17.* ]] || fail "Java 17 is required. Found: ${java_version:-unknown}. Set JAVA_BIN to a Java 17 executable."
 
-runtime="$ROOT/server/runtime"
 [[ -f "$runtime/run.sh" ]] || fail "Forge run.sh is missing. Run ./server/install.sh first."
 bootstrap="$runtime/packwiz-installer-bootstrap.jar"
 [[ -f "$bootstrap" ]] || fail "Missing $bootstrap. Run ./server/install.sh first."

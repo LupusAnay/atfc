@@ -22,6 +22,18 @@ verify_sha256() {
   [[ "$actual" == "$expected" ]] || fail "Checksum mismatch for $file"
 }
 
+write_java_env() {
+  local resolved java_dir java_home
+  resolved=$(readlink -f "$(command -v "$JAVA_BIN")")
+  java_dir=$(dirname "$resolved")
+  java_home=$(dirname "$java_dir")
+  cat > "$runtime/java.env" <<EOF
+# Generated from the Java executable selected during installation.
+JAVA_HOME=$java_home
+PATH=$java_dir:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin
+EOF
+}
+
 render_template() {
   local input=$1
   local output=$2
@@ -51,7 +63,14 @@ render_template() {
 [[ "$PACK_URL" == https://* || "$PACK_URL" == http://* ]] || fail 'PACK_URL must start with http:// or https://'
 [[ "$PACK_URL" != *YOUR_GITHUB_OWNER* && "$PACK_URL" != *YOUR_REPOSITORY* ]] || fail 'Configure PACK_URL in pack.env before installing.'
 
+runtime="$ROOT/server/runtime"
+if [[ -r "$runtime/java.env" ]]; then
+  # shellcheck disable=SC1090
+  source "$runtime/java.env"
+fi
+
 require_command install
+require_command readlink
 require_command sha256sum
 require_command systemctl
 JAVA_BIN=${JAVA_BIN:-java}
@@ -59,8 +78,8 @@ require_command "$JAVA_BIN"
 java_version=$({ "$JAVA_BIN" -version 2>&1 || true; } | awk -F '"' '/version/ {print $2; exit}')
 [[ "$java_version" == 17.* ]] || fail "Java 17 is required. Found: ${java_version:-unknown}. Set JAVA_BIN to a Java 17 executable."
 
-runtime="$ROOT/server/runtime"
 mkdir -p "$runtime"
+write_java_env
 
 bootstrap="$runtime/packwiz-installer-bootstrap.jar"
 if [[ ! -f "$bootstrap" ]]; then
