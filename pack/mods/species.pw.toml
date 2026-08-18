@@ -1,0 +1,8 @@
+name = "Species"
+filename = "species-3.5.jar"
+side = "both"
+
+[download]
+hash-format = "sha1"
+hash = "b4d924f4faf6eb201db04205b61fa1524a8b0178"
+url = "https://mediafilez.forgecdn.net/files/6886/321/species-3.5.jar"

@@ -1,0 +1,13 @@
+name = "APTweaks: Core (11.x Classic)"
+filename = "adaptive_performance_tweaks_core_1.20.1-11.6.1.jar"
+side = "server"
+
+[download]
+hash-format = "sha1"
+hash = "bc3d9c05377074bb0766eba35feabb2b45dfed0c"
+mode = "metadata:curseforge"
+
+[update]
+[update.curseforge]
+file-id = 7736354
+project-id = 561087

@@ -1,0 +1,13 @@
+name = "Cosy Critters & Creepy Crawlies"
+filename = "cosycritters-0.3.3+1.20.1-forge.jar"
+side = "client"
+
+[download]
+hash-format = "sha1"
+hash = "26db309a19862fd1923288392973f3a893afe1b3"
+mode = "metadata:curseforge"
+
+[update]
+[update.curseforge]
+file-id = 8390090
+project-id = 1182393

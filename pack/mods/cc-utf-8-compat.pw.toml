@@ -1,0 +1,13 @@
+name = "CC UTF-8 Compat"
+filename = "cc_utf8_compat-1.0.1-beta.1.jar"
+side = "both"
+
+[download]
+hash-format = "sha1"
+hash = "983f71217eab5bccd47a3b9df6bf71825528f977"
+mode = "metadata:curseforge"
+
+[update]
+[update.curseforge]
+file-id = 8283462
+project-id = 1581366

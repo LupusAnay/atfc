@@ -1,0 +1,13 @@
+name = "TerraFirmaGreg-Shaders"
+filename = "TerraFirmaGreg-Shaders-Complementary-3.1.6.zip"
+side = "client"
+
+[download]
+hash-format = "sha1"
+hash = "72d5bb073fcddcae79605f40b2618446bc5c293e"
+mode = "metadata:curseforge"
+
+[update]
+[update.curseforge]
+file-id = 8104352
+project-id = 954161

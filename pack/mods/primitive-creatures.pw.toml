@@ -1,0 +1,13 @@
+name = "Primitive creatures"
+filename = "primitive_creatures_2.7forge1.20.1.jar"
+side = "both"
+
+[download]
+hash-format = "sha1"
+hash = "f2fb38516941ac4193282af35bc2182ca98b17f5"
+mode = "metadata:curseforge"
+
+[update]
+[update.curseforge]
+file-id = 7287434
+project-id = 1218288

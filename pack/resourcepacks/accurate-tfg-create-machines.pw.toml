@@ -1,0 +1,13 @@
+name = "Accurate TFG Create Machines"
+filename = "tfg-accurate-create-machines.zip"
+side = "both"
+
+[download]
+hash-format = "sha1"
+hash = "9ca3f5c77aa0838cbca8f9bb30f8e891e825b2e1"
+mode = "metadata:curseforge"
+
+[update]
+[update.curseforge]
+file-id = 8561627
+project-id = 1636299

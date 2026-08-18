@@ -1,0 +1,8 @@
+name = "APTweaks: Player Login Optimization and Protection (11.x Classic)"
+filename = "adaptive_performance_tweaks_player_1.20.1-11.6.1.jar"
+side = "server"
+
+[download]
+hash-format = "sha1"
+hash = "632208b88322cb4985a45cf1448d5dce7b12a7cb"
+url = "https://mediafilez.forgecdn.net/files/7736/365/adaptive_performance_tweaks_player_1.20.1-11.6.1.jar"

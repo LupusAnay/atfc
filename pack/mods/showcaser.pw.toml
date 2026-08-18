@@ -1,0 +1,13 @@
+name = "Showcaser"
+filename = "showcaser-forge-1.7.4.jar"
+side = "both"
+
+[download]
+hash-format = "sha1"
+hash = "018979f9764ea8210e66b20b235f0e53bcda846e"
+mode = "metadata:curseforge"
+
+[update]
+[update.curseforge]
+file-id = 8151011
+project-id = 1491840

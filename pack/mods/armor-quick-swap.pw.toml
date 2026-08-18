@@ -1,0 +1,13 @@
+name = "Armor Quick Swap"
+filename = "ArmorQuickSwap-v8.0.0-1.20.1-Forge.jar"
+side = "both"
+
+[download]
+hash-format = "sha1"
+hash = "3412b251d21dcb9335ac39bd0ec075e59487c522"
+mode = "metadata:curseforge"
+
+[update]
+[update.curseforge]
+file-id = 7120000
+project-id = 1367068

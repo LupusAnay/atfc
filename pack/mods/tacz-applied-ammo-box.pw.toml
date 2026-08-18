@@ -1,0 +1,13 @@
+name = "[TaCZ] Applied Ammo Box"
+filename = "applied_ammo_box-1.20.1-1.2.3.jar"
+side = "both"
+
+[download]
+hash-format = "sha1"
+hash = "86351432988a10b5940e3ae7ae4f5f43e95c169e"
+mode = "metadata:curseforge"
+
+[update]
+[update.curseforge]
+file-id = 8412068
+project-id = 1338332

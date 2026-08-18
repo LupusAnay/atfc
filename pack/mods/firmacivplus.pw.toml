@@ -1,0 +1,13 @@
+name = "FirmaCivPlus"
+filename = "firmacivplus-1.0.1-1.20.1.jar"
+side = "both"
+
+[download]
+hash-format = "sha1"
+hash = "5d21f85a95332dc002cd26ce085934a0d3605e08"
+mode = "metadata:curseforge"
+
+[update]
+[update.curseforge]
+file-id = 6491888
+project-id = 1243743

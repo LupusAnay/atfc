@@ -1,0 +1,8 @@
+name = "APTweaks: Items (11.x Classic)"
+filename = "adaptive_performance_tweaks_items_1.20.1-11.6.1.jar"
+side = "server"
+
+[download]
+hash-format = "sha1"
+hash = "52b58d36ca830d684119a4ae0a2c16d310b62ba3"
+url = "https://mediafilez.forgecdn.net/files/7736/364/adaptive_performance_tweaks_items_1.20.1-11.6.1.jar"

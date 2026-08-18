@@ -1,0 +1,13 @@
+name = "TFC Weld Button"
+filename = "TFCWeldButton-1.20.1-1.1.jar"
+side = "both"
+
+[download]
+hash-format = "sha1"
+hash = "dda1ccb3f998e85de186c84162bf437f2e800031"
+mode = "metadata:curseforge"
+
+[update]
+[update.curseforge]
+file-id = 5949292
+project-id = 1093683

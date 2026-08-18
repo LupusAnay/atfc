@@ -1,0 +1,13 @@
+name = "Modern Create: Steam Powered"
+filename = "modern_steam_powered_1_20_1.zip"
+side = "both"
+
+[download]
+hash-format = "sha1"
+hash = "d3d0c34f1ed31f5556a56afb6225df9ae59cbeaa"
+mode = "metadata:curseforge"
+
+[update]
+[update.curseforge]
+file-id = 6037968
+project-id = 1168737

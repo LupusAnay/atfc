@@ -1,0 +1,25 @@
+{
+    "name": "ad_astra_orbit",
+    "dimension-names": [
+        "mercury"
+    ],
+    "rain": false,
+    "storm": false,
+    "biome-selector": {
+        "always": false
+    },
+    "regions": [
+        {
+            "name": "suspense",
+            "sounds": [
+                {
+                    "name": "nether",
+                    "files": [
+                        "ambientsounds:suspense.end"
+                    ],
+                    "volume": 0.1
+                }
+            ]
+        }
+    ]
+}

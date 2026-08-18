@@ -1,0 +1,13 @@
+name = "EMIAccelerator"
+filename = "emi_accelerator-1.0.1.jar"
+side = "client"
+
+[download]
+hash-format = "sha1"
+hash = "e7376dea7dc29352ae8a8b20d1fd8d7b1e3402b0"
+mode = "metadata:curseforge"
+
+[update]
+[update.curseforge]
+file-id = 8136405
+project-id = 1542062

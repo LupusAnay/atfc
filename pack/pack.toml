@@ -1,14 +1,13 @@
-name = "Auto-TFC Private"
-author = "Private server operators"
-version = "1.0.0"
-description = "Auto-TerraFirmaCraft 1.11.1 with shared Distant Horizons, Antique Atlas, and small private-server QoL."
+name = "TerraFirmaGreg-Modern"
+author = "Exception, Xikaro"
+version = "0.13.7"
 pack-format = "packwiz:1.1.0"
 
 [index]
 file = "index.toml"
 hash-format = "sha256"
-hash = "d1545c4f583eb269e2506633a8ad034f739e1a31355ae0d6e51e94c9d2220d8e"
+hash = "321e269eebf345ac1e77a5dda4fe4e458f8b5988ec6ecad82455ac3647209f70"
 
 [versions]
-forge = "40.2.9"
-minecraft = "1.18.2"
+forge = "47.4.13"
+minecraft = "1.20.1"

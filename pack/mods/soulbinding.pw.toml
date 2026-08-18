@@ -1,0 +1,8 @@
+name = "Soulbinding"
+filename = "SoulBinding1.20.1(Forge)vs1.0.2.jar"
+side = "both"
+
+[download]
+hash-format = "sha1"
+hash = "b794e39c75a28753900dfe81d97137bc1d7b50d7"
+url = "https://mediafilez.forgecdn.net/files/4928/200/SoulBinding1.20.1%28Forge%29vs1.0.2.jar"

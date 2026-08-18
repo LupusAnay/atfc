@@ -1,0 +1,13 @@
+name = "I <3 Hardcore TFC"
+filename = "HardcoreHeartsTFC.zip"
+side = "both"
+
+[download]
+hash-format = "sha1"
+hash = "91cbc947ab794df7cade4d69a9077fea5fe4276d"
+mode = "metadata:curseforge"
+
+[update]
+[update.curseforge]
+file-id = 7859085
+project-id = 1501910

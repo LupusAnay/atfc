@@ -1,8 +1,0 @@
-{
-  "fluid": "kubejs:incandescent_oil",
-  "burn_rate": -1,
-  "valid_lamps": {
-    "type": "tfc:tag",
-    "tag": "tfc:lamps"
-  }
-}

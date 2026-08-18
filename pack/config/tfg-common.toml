@@ -1,0 +1,6 @@
+
+[worldSpawn]
+	#ID of the custom spawn conditions for the next generated world.
+	#Valid ids are: beneath, default, desert, polar, temperate, tfcgenviewer, tropical, tundra
+	id = "default"
+

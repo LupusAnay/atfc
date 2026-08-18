@@ -1,0 +1,13 @@
+name = "Strut Your Stuff (Library)"
+filename = "struts-1.1.0+mc1.20.1.jar"
+side = "both"
+
+[download]
+hash-format = "sha1"
+hash = "0fb4e23f58038ff0745c3f04663256b65a0f2a8c"
+mode = "metadata:curseforge"
+
+[update]
+[update.curseforge]
+file-id = 7796581
+project-id = 1486746

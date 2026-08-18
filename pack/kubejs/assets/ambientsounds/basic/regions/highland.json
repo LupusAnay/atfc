@@ -1,0 +1,54 @@
+{
+	"name": "highland",
+	"biomes": [
+		"old_mountains",
+		"old_mountain_lake",
+		"oceanic_mountains",
+		"oceanic_mountain_lake",
+		"glaciated_mountains",
+		"glaciated_oceanic_mountains",
+		"glaciated_shield_volcano",
+		"extreme_doline_mountains",
+		"glacially_carved_mountains",
+		"glacially_carved_oceanic_mountains",
+		"ice_sheet_mountains",
+		"ice_sheet_oceanic_mountains",
+		"active_shield_volcano",
+		"dormant_shield_volcano",
+		"extinct_shield_volcano",
+		"ancient_shield_volcano",
+		"glaciated_shield_volcano",
+		"rocky_plateau",
+		"martian_mountains",
+		"rusticus_edge",
+		"amber_edge",
+		"sangnum_edge"
+	],
+	"sounds": [
+		{
+			"name": "heavy-wind",
+			"category": "wind",
+			"files": [
+				"ambientsounds:wind.heavy-wind"
+			],
+			"air": {
+				"min": 0.6
+			},
+			"volume": 0.5
+		},
+		{
+			"name": "wind-in-leaves",
+			"category": "wind",
+			"files": [
+				"ambientsounds:wind.wind-in-leaves"
+			],
+			"air": {
+				"min": 0.6
+			},
+			"features": [
+				"tree"
+			],
+			"volume": 0.5
+		}
+	]
+}

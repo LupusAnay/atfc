@@ -1,0 +1,13 @@
+name = "Beneath"
+filename = "beneath-1.20.1-1.0.6.jar"
+side = "both"
+
+[download]
+hash-format = "sha1"
+hash = "fc9208fa33d9f6868ab123dc0a73049fe3805201"
+mode = "metadata:curseforge"
+
+[update]
+[update.curseforge]
+file-id = 7400831
+project-id = 1113980

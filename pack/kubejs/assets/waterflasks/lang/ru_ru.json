@@ -1,0 +1,15 @@
+{
+  "item.waterflasks.bladder": "Мочевой пузырь",
+  "item.waterflasks.broken_iron_flask": "Сломанная фляга (Кованое железо)",
+  "item.waterflasks.broken_leather_flask": "Порванный бурдюк",
+  "item.waterflasks.iron_flask": "Фляга (Кованое железо)",
+  "item.waterflasks.iron_flask.filled": "Фляга (Кованое железо) (%s)",
+  "item.waterflasks.leather_flask": "Бурдюк",
+  "item.waterflasks.leather_flask.filled": "Бурдюк (%s)",
+  "item.waterflasks.leather_side": "Кожа на бурдюк",
+  "item.waterflasks.red_steel_flask": "Фляга (Красная сталь)",
+  "item.waterflasks.red_steel_flask.filled": "Фляга (Красная сталь) (%s)",
+  "item.waterflasks.unfinished_iron_flask": "Недоделанная фляга (Кованое железо)",
+  "item.waterflasks.unfinished_red_steel_flask": "Недоделанная фляга (Красная сталь)",
+  "waterflasks.item.flaskbreak": "Фляга разбивается"
+}

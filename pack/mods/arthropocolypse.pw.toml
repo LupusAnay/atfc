@@ -1,0 +1,8 @@
+name = "[Deprecated] Arthropocolypse"
+filename = "arthropocolypse-1.0.6.jar"
+side = "both"
+
+[download]
+hash-format = "sha1"
+hash = "c43b2c1e8a9fa11d139a202e37054a01db8fd677"
+url = "https://mediafilez.forgecdn.net/files/5397/648/arthropocolypse-1.0.6.jar"

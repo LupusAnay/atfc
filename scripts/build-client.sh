@@ -25,7 +25,9 @@ command -v sha256sum >/dev/null 2>&1 || fail 'sha256sum is required to verify th
 command -v zip >/dev/null 2>&1 || fail 'zip is required to build the Prism archive'
 
 [[ -f "$ROOT/pack/pack.toml" ]] || fail 'pack/pack.toml is missing'
-grep -Fxq 'distantGeneratorMode = "FEATURES"' "$ROOT/pack/config/DistantHorizons.toml" || fail 'DH must use normal FEATURES generation'
+if find "$ROOT/pack" -type f -name 'distanthorizons*.pw.toml' -print -quit | grep -q .; then
+  grep -Fxq 'distantGeneratorMode = "FEATURES"' "$ROOT/pack/config/DistantHorizons.toml" || fail 'DH must use normal FEATURES generation'
+fi
 (cd "$ROOT/pack" && "$PACKWIZ_COMMAND" list >/dev/null) || fail 'Packwiz could not parse pack/'
 
 stage=$(mktemp -d)
@@ -43,13 +45,20 @@ curl --fail --location --retry 3 --retry-all-errors \
 actual_sha256=$(sha256sum "$bootstrap" | awk '{print $1}')
 [[ "$actual_sha256" == "$PACKWIZ_BOOTSTRAP_SHA256" ]] || fail 'Packwiz bootstrap checksum mismatch'
 
-touch -d '1980-01-01 00:00:00 UTC' "$stage/instance.cfg" "$stage/mmc-pack.json" "$bootstrap"
+if [[ -f "$ROOT/client/servers.dat" ]]; then
+  cp "$ROOT/client/servers.dat" "$stage/.minecraft/servers.dat"
+  touch -t 198001010000 "$stage/.minecraft/servers.dat"
+fi
+
+touch -t 198001010000 "$stage/instance.cfg" "$stage/mmc-pack.json" "$bootstrap"
 output="$ROOT/dist/atfc-prism.zip"
 mkdir -p "$ROOT/dist"
 rm -f "$output"
 (
   cd "$stage"
-  zip -X -9 -q "$output" instance.cfg mmc-pack.json .minecraft/packwiz-installer-bootstrap.jar
+  files=(instance.cfg mmc-pack.json .minecraft/packwiz-installer-bootstrap.jar)
+  [[ -f .minecraft/servers.dat ]] && files+=(.minecraft/servers.dat)
+  zip -X -9 -q "$output" "${files[@]}"
 )
 zip -Tqq "$output"
 

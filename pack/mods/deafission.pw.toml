@@ -1,0 +1,13 @@
+name = "Dea's Fission"
+filename = "deafission-1.20.1-0.16.0.jar"
+side = "both"
+
+[download]
+hash-format = "sha1"
+hash = "80083ceeeeedd6c591ce63ee5c2c4891e431fe4a"
+mode = "metadata:curseforge"
+
+[update]
+[update.curseforge]
+file-id = 7633771
+project-id = 1354541

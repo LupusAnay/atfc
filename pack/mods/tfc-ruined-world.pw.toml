@@ -1,0 +1,13 @@
+name = "TFC ruined world"
+filename = "tfcstructuremodc-0.0.4.jar"
+side = "both"
+
+[download]
+hash-format = "sha1"
+hash = "30cdc7fb5e39545feaeb5f09b6fb4ccaf09aec14"
+mode = "metadata:curseforge"
+
+[update]
+[update.curseforge]
+file-id = 6019462
+project-id = 1129845

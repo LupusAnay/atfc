@@ -1,0 +1,13 @@
+name = "Desert Behemoths Sandworms - Fix"
+filename = "sandworm_mod-1.2.0.jar"
+side = "both"
+
+[download]
+hash-format = "sha1"
+hash = "aead13ba60e0137eabbba8c05c42a50107977be9"
+mode = "metadata:curseforge"
+
+[update]
+[update.curseforge]
+file-id = 7840625
+project-id = 1496185

@@ -1,0 +1,13 @@
+name = "TFC Lunch Box"
+filename = "tfclunchbox-1.20.1-1.0.0.29.jar"
+side = "both"
+
+[download]
+hash-format = "sha1"
+hash = "251e6d19e7f75f1b6f0b46fbc01f04b313952b0e"
+mode = "metadata:curseforge"
+
+[update]
+[update.curseforge]
+file-id = 7603117
+project-id = 1283445

@@ -1,0 +1,13 @@
+name = "Roads and Roofs TFC"
+filename = "rnr-0.2.5-1.20.1.jar"
+side = "both"
+
+[download]
+hash-format = "sha1"
+hash = "0df8fbeed3bdbaed69e422d18f83f8ec2a0d0b47"
+mode = "metadata:curseforge"
+
+[update]
+[update.curseforge]
+file-id = 8573489
+project-id = 1048212

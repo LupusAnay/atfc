@@ -1,0 +1,13 @@
+name = "Tfc Scraping Knives"
+filename = "tfcscraping-1.0.2.jar"
+side = "both"
+
+[download]
+hash-format = "sha1"
+hash = "a28cf46a637287b308058abb678fbf382198f3fe"
+mode = "metadata:curseforge"
+
+[update]
+[update.curseforge]
+file-id = 6133109
+project-id = 1172700

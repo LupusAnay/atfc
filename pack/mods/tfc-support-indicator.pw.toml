@@ -1,0 +1,13 @@
+name = "TFC Support Indicator"
+filename = "tfc_support_indicator-1.0.7+mc1.20.1.jar"
+side = "client"
+
+[download]
+hash-format = "sha1"
+hash = "254e298e27e574da9822946eb7f1362d1ef06b4d"
+mode = "metadata:curseforge"
+
+[update]
+[update.curseforge]
+file-id = 7700000
+project-id = 1195624

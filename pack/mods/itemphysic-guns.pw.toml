@@ -1,0 +1,13 @@
+name = "ItemPhysic Guns"
+filename = "itemphysicguns-1.0.3-7686b43.jar"
+side = "client"
+
+[download]
+hash-format = "sha1"
+hash = "109c8d57603fe4e1a464c3e4a876eb41ea56d5fd"
+mode = "metadata:curseforge"
+
+[update]
+[update.curseforge]
+file-id = 7853450
+project-id = 1451825

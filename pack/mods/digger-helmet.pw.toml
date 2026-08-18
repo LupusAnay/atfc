@@ -1,0 +1,13 @@
+name = "Digger Helmet"
+filename = "diggerhelmet-1.20.1-1.0.0.31.jar"
+side = "both"
+
+[download]
+hash-format = "sha1"
+hash = "be0ed93cc6c8de0722c1682ffdf594303350ae12"
+mode = "metadata:curseforge"
+
+[update]
+[update.curseforge]
+file-id = 8570403
+project-id = 1243596

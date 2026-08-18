@@ -1,0 +1,13 @@
+name = "New Animals for TerraFirmaCraft"
+filename = "TerraFirmaCraft_New_Animals.zip"
+side = "both"
+
+[download]
+hash-format = "sha1"
+hash = "c3318956eff6b4c9e49e81b89ff2b49eaf16d4dc"
+mode = "metadata:curseforge"
+
+[update]
+[update.curseforge]
+file-id = 6436812
+project-id = 1246070

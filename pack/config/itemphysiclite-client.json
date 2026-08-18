@@ -1,0 +1,18 @@
+{
+  "rotateSpeed": 1.0,
+  "blockRequireOffset": {
+    "blocks": [
+      "minecraft:snow",
+      "minecraft:soul_sand"
+    ],
+    "tags": []
+  },
+  "blockBelowRequireOffset": {
+    "blocks": [],
+    "tags": []
+  },
+  "vanillaRendered": {
+    "entries": [],
+    "isWhitelist": true
+  }
+}

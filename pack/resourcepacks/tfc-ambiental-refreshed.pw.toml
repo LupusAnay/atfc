@@ -1,0 +1,13 @@
+name = "TFC Ambiental Refreshed"
+filename = "TFC_Ambiental_Refreshed_1.18-1.21.1.zip"
+side = "client"
+
+[download]
+hash-format = "sha1"
+hash = "73561b96df5b4ead380bdca8f01db3ae11f63daf"
+url = "https://mediafilez.forgecdn.net/files/7223/628/TFC_Ambiental_Refreshed_1.18-1.21.1.zip"
+
+[update]
+[update.curseforge]
+file-id = 7223628
+project-id = 1379694

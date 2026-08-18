@@ -1,0 +1,8 @@
+name = "Create Horse Power"
+filename = "createhorsepower-1.20.1-1.1.0.jar"
+side = "both"
+
+[download]
+hash-format = "sha1"
+hash = "b4a5802ec8e5c1eef4fe69b9ca973eb7fe02ace9"
+url = "https://mediafilez.forgecdn.net/files/7259/899/createhorsepower-1.20.1-1.1.0.jar"
