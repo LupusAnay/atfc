@@ -17,6 +17,10 @@ The current upstream `dev` heads were inspected but are not selected for this re
 
 These twelve official CurseForge files are API-excluded in the active Packwiz source and use verified direct `mediafilez.forgecdn.net` URLs: Adaptive Performance Tweaks Gamerules, Items, and Player; Arthropocolypse; Create Horse Power; Detected setBlock Be Gone; Entity Culling; Not Enough Animations; Soulbinding; Species; TFC Ambiental Refreshed; and TFC Ruins. Their names, filenames, sides, project/file IDs, versions, and SHA-1 hashes remain official. Downloaded binaries and verification logs remain outside Git.
 
+## Additional Distant Horizons integration
+
+Distant Horizons is not part of the selected upstream TFG manifest. The active pack adds the official Modrinth Forge/Fabric artifact `DistantHorizons-3.2.0-b-1.20.1-fabric-forge.jar` (version `FWGxbEM3`, project `uCdwusMi`) for both client and server use. The pinned direct URL is `https://cdn.modrinth.com/data/uCdwusMi/versions/FWGxbEM3/DistantHorizons-3.2.0-b-1.20.1-fabric-forge.jar`; SHA-1 is `5667440fdca4d4543c345c9ba6fda2dda64928ca`. The shared DH configuration uses `distantGeneratorMode = "INTERNAL_SERVER"` so server-side LOD generation is enabled. This is an explicit project addition, not an upstream TFG artifact.
+
 ## Matrix and pack metadata
 
 | Input | Exact upstream value | Source |

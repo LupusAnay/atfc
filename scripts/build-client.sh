@@ -26,7 +26,7 @@ command -v zip >/dev/null 2>&1 || fail 'zip is required to build the Prism archi
 
 [[ -f "$ROOT/pack/pack.toml" ]] || fail 'pack/pack.toml is missing'
 if find "$ROOT/pack" -type f -name 'distanthorizons*.pw.toml' -print -quit | grep -q .; then
-  grep -Fxq 'distantGeneratorMode = "FEATURES"' "$ROOT/pack/config/DistantHorizons.toml" || fail 'DH must use normal FEATURES generation'
+  grep -Eq '^[[:space:]]*distantGeneratorMode = "INTERNAL_SERVER"[[:space:]]*$' "$ROOT/pack/config/DistantHorizons.toml" || fail 'DH must use INTERNAL_SERVER generation for server-side LODs'
 fi
 (cd "$ROOT/pack" && "$PACKWIZ_COMMAND" list >/dev/null) || fail 'Packwiz could not parse pack/'
 
