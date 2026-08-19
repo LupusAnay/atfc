@@ -91,10 +91,10 @@ printf '%s\n' 'RCON_PASS=replace-this' > server/runtime/.rcon_pass
 chmod 600 server/runtime/.rcon_pass
 ```
 
-The default RCON client is `mcli`. Override it when the client lives elsewhere:
+The default RCON client is `mcrcon`. Override it when the client lives elsewhere:
 
 ```bash
-make RCON_CLIENT="$HOME/path/to/mcli" list
+make RCON_CLIENT="$HOME/path/to/mcrcon" list
 ```
 
 Available commands:

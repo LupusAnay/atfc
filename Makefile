@@ -3,11 +3,12 @@ SHELL := /bin/bash
 PACKWIZ ?= packwiz
 JAVA_BIN ?= java
 RUNTIME := $(CURDIR)/server/runtime
-RCON_CLIENT ?= mcli
-RCON_ADDR ?= 127.0.0.1:25575
+RCON_CLIENT ?= mcrcon
+RCON_HOST ?= 127.0.0.1
+RCON_PORT ?= 25575
 RCON_PASS_FILE ?= $(RUNTIME)/.rcon_pass
 -include $(RCON_PASS_FILE)
-RCON_BASE := "$(RCON_CLIENT)" "$(RCON_ADDR)" rcon "$(RCON_PASS)"
+RCON_BASE := "$(RCON_CLIENT)" -H "$(RCON_HOST)" -P "$(RCON_PORT)" -p "$(RCON_PASS)" -c
 
 .PHONY: help refresh client install update deploy rcon-check rcon list say cmd save stop restart status logs log
 
@@ -45,28 +46,28 @@ deploy:
 	ssh atfc 'cd "$$HOME/minecraft/atfc" && git pull --ff-only && ./server/update.sh'
 
 rcon-check:
-	@command -v "$(RCON_CLIENT)" >/dev/null 2>&1 || { printf '%s\n' 'RCON client not found. Set RCON_CLIENT=/path/to/mcli.' >&2; exit 1; }
+	@command -v "$(RCON_CLIENT)" >/dev/null 2>&1 || { printf '%s\n' 'RCON client not found. Set RCON_CLIENT=/path/to/mcrcon.' >&2; exit 1; }
 	@test -n "$(RCON_PASS)" || { printf '%s\n' 'Missing RCON_PASS. Create server/runtime/.rcon_pass.' >&2; exit 1; }
 
 rcon: rcon-check
-	@$(RCON_BASE) -i
+	@$(RCON_BASE) -t
 
 list: rcon-check
-	@$(RCON_BASE) -c 'list'
+	@$(RCON_BASE) 'list'
 
 say: rcon-check
 	@test -n "$(MSG)" || { printf '%s\n' 'Set MSG, for example: make say MSG="Hello".' >&2; exit 1; }
-	@$(RCON_BASE) -c "say $(MSG)"
+	@$(RCON_BASE) "say $(MSG)"
 
 cmd: rcon-check
 	@test -n "$(CMD)" || { printf '%s\n' 'Set CMD, for example: make cmd CMD=save-all.' >&2; exit 1; }
-	@$(RCON_BASE) -c "$(CMD)"
+	@$(RCON_BASE) "$(CMD)"
 
 save: rcon-check
-	@$(RCON_BASE) -c 'save-all'
+	@$(RCON_BASE) 'save-all'
 
 stop: rcon-check
-	@$(RCON_BASE) -c 'stop'
+	@$(RCON_BASE) 'stop'
 
 restart:
 	systemctl --user restart minecraft-atfc.service
