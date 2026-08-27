@@ -1,13 +1,13 @@
 name = "[TaCZ/SBW] PlayerRevive gun mod compitability"
-filename = "playerrevive_compat-1.0.3-f4fdba6.jar"
+filename = "playerrevive_compat-1.0.4-daf51f2.jar"
 side = "both"
 
 [download]
 hash-format = "sha1"
-hash = "46c88b2a28883bd01ca69c50236e14c7cad38b17"
+hash = "bd7596d7a225dd4d1cc10a020431b51cc1e21de4"
 mode = "metadata:curseforge"
 
 [update]
 [update.curseforge]
-file-id = 8553822
+file-id = 8608222
 project-id = 1440963

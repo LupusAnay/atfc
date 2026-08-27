@@ -1,13 +1,13 @@
 name = "ArborFirmaCraft"
-filename = "afc-1.0.22-1.20.1.jar"
+filename = "afc-1.0.23-1.20.1.jar"
 side = "both"
 
 [download]
 hash-format = "sha1"
-hash = "2da6328fbd2a9c911547617057e520838d36c175"
-mode = "metadata:curseforge"
+hash = "62272e1f492b174d4f222dbd03bdb5078a3b5a2a"
+url = "https://cdn.modrinth.com/data/9q4wtMjp/versions/pxyePina/afc-1.0.23-1.20.1.jar"
 
 [update]
-[update.curseforge]
-file-id = 8071302
-project-id = 877545
+[update.modrinth]
+mod-id = "9q4wtMjp"
+version = "pxyePina"

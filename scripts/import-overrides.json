@@ -1,0 +1,19 @@
+{
+  "_comment": [
+    "Repo-owned judgment calls for scripts/import_tfg_release.py that the",
+    "pakku-lock.json cannot express. 'sides' forces a declared side for the",
+    "named projects; these are the historical client-compatibility",
+    "corrections recorded in docs/tfg-modern-source-lock.md (upstream flags",
+    "them server- or client-side, but their mixins/registry data require the",
+    "opposite side or both at runtime).",
+    "Update this file only with a documented runtime reason."
+  ],
+  "sides": {
+    "smartbrainlib": "both",
+    "create-liquid-fuel": "both",
+    "lithostitched": "both",
+    "block-runner": "both",
+    "immersive-optimization": "both",
+    "tfc-ruins": "both"
+  }
+}

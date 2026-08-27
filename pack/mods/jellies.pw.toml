@@ -1,13 +1,13 @@
 name = "Jellies"
-filename = "Jellies-1.20.1-0.1.4.jar"
+filename = "Jellies-1.20.1-0.1.6.jar"
 side = "both"
 
 [download]
 hash-format = "sha1"
-hash = "cdb85274c6c6ad3928516c76e42458becc9325af"
+hash = "c7b726f18b65c1b11eb45245e6fcf83d83ee3c20"
 mode = "metadata:curseforge"
 
 [update]
 [update.curseforge]
-file-id = 8591504
+file-id = 8681154
 project-id = 1607526

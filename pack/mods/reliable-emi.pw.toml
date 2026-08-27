@@ -1,13 +1,13 @@
 name = "Reliable EMI (REMI)"
-filename = "emixx-forge-1.5.1.jar"
+filename = "emixx-forge-1.5.3.jar"
 side = "client"
 
 [download]
 hash-format = "sha1"
-hash = "7bf56799042bb929418a497b08218e8a922e9d9e"
+hash = "854bbfad1ca9f8c6084f7befbae1eb179def259b"
 mode = "metadata:curseforge"
 
 [update]
 [update.curseforge]
-file-id = 8274454
+file-id = 8636807
 project-id = 1411826

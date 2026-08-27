@@ -6,7 +6,10 @@
         "height": 32
     },
     "uiTheme": "intellij-dark",
-    "localVersion": "0.13.7",
+    "localVersion": "0.13.8",
     "requiresRestart": false,
-    "checkStopModReposts": false
+    "checkStopModReposts": false,
+    "pakku": {
+        "promptConfigCreate": false
+    }
 }

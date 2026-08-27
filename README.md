@@ -36,12 +36,25 @@ Import `dist/atfc-prism.zip` into Prism once and press Play. Each launch synchro
 
 ## Change the pack
 
+Re-imports of upstream releases are automated:
+
 ```bash
-cd ~/minecraft/atfc/pack
+uv run scripts/import_tfg_release.py \
+    --zip <official-curseforge.zip> --lock <tag>/pakku-lock.json \
+    --prev-zip <previous-release.zip> --release-version <v> \
+    --expected-sha256 <from-github-release-api>   # dry run; add --apply to write
+```
+
+It plans before it writes, keeps unchanged entries byte-stable, and preserves repo-owned doctrine from `scripts/import-overrides.json`. See `docs/tfg-modern-source-lock.md` for the stability contract and provider-skew rules.
+
+Manual changes stay the same as before:
+
+```bash
+cd pack
 packwiz <command>
-packwiz refresh
 cd ..
-git add pack pack.env client Makefile scripts server README.md .gitignore
+make refresh
+git add -A pack scripts docs README.md .gitignore client server Makefile .nojekyll
 git commit -m 'Update pack'
 git push
 ```

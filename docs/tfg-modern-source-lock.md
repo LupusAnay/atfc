@@ -4,14 +4,25 @@ This is the provenance record for the official TerraFirmaGreg Modern distributio
 
 ## Selected upstream revisions
 
-| Source | Ref | Commit | Tree | Verification |
-| --- | --- | --- | --- | --- |
-| [Modpack-Modern](https://github.com/TerraFirmaGreg-Team/Modpack-Modern) | `main`, release tag `0.13.7` | `3822f9ba39db9eb32235fcb2bd89d61332952959` | `a64b700a26c9b947de662f6613dc575b27d07a33` | Fresh tag fetch matched the selected commit |
-| [Core-Modern](https://github.com/TerraFirmaGreg-Team/Core-Modern) | release tag `0.9.20` | `b03bfaf2b6029ce5ef9a10572e7fc24d5e5d26fb` | `e57135dd88e3a361a7a3ff30a1ef9c15d3bf2b6e` | Fresh tag fetch matched the selected commit |
+| Source | Ref | Commit | Verification |
+| --- | --- | --- | --- |
+| [Modpack-Modern](https://github.com/TerraFirmaGreg-Team/Modpack-Modern) | release tag `0.13.8` | `180d9b6a93d4ce03d8dbdfc70c8da2a7d02599b4` | Tag ref resolves to the recorded commit; release asset digests verified on download |
+| [Core-Modern](https://github.com/TerraFirmaGreg-Team/Core-Modern) | release tag `0.9.21` | `2cf74e65114417b7466fe80910993d0483e0a65f` | Tag ref resolves to the recorded commit |
 
-Capture time: `2026-08-18T09:28:43Z`.
+Capture time: `2026-08-27`.
 
-The current upstream `dev` heads were inspected but are not selected for this release record: Modpack-Modern `20df92cd6e6c8497a62b3114fd416dc15c6b8723`; Core-Modern `ed9dd4fecc59b7fc063126ccfb2a3fc4083e8c28`. The release tag is used because the pack's `main` points to `0.13.7`.
+The upstream `dev` heads are not selected; the release tags own the pack content.
+
+Re-import inputs for 0.13.8 (SHA-256, from the GitHub release API and local verification):
+
+| Artifact | SHA-256 |
+| --- | --- |
+| `TerraFirmaGreg-Modern-0.13.8-curseforge.zip` | `4c43cded622deb9b714ec263c37e06428d84d6a82c775ede976bc82796b0550f` |
+| `TerraFirmaGreg-Modern-0.13.8-serverpack.zip` | `d4a20afa59f053fc16e1d82ae42dcd6c284d862d16dff9d07598c69d5c5c0ed6` |
+| tag `pakku-lock.json` | `70b83d718dc76e904d0043e5bda7da9f42837d5199da2988d2a45890a49acc84` |
+| tag `pakku.json` | `8d08beeeb9e30faeff88876eb02b2a86d229d04e98004841f257fe2cfa817300` |
+
+The serverpack is used as a parity oracle when provider records disagree.
 
 ## Verified direct-download exclusions
 
@@ -29,11 +40,11 @@ Distant Horizons is not part of the selected upstream TFG manifest. The active p
 | Loader | Forge `47.4.13` | Modpack `pakku-lock.json`; Core `gradle.properties` |
 | Java build/runtime | Core build property `java_version = 17` | Core tag `gradle.properties` |
 | Java server guidance | “Minecraft 1.20 and later: Java 17 and later” | Modpack `.pakku/server-overrides/server_starter.conf` |
-| Local Java | unavailable | `java -version` exited 1: “Unable to locate a Java Runtime.” |
-| Pack name/version | `TerraFirmaGreg-Modern` / `DEV` | Modpack `pakku.json` |
-| Lock target | `multiplatform` | Modpack `pakku-lock.json` |
-| Lock file | `pakku-lock.json` SHA-256 `dd17e391d175115a804c018b11151509226dc2aa4ccad11d8e1bc7b7d1a9fd42` | Selected Modpack-Modern commit |
-| Pack manifest | `pakku.json` SHA-256 `8d08beeeb9e30faeff88876eb02b2a86d229d04e98004841f257fe2cfa817300` | Selected Modpack-Modern commit |
+| Local Java | OpenJDK 17 available at `/usr/lib/jvm/java-17-openjdk`; default toolchain Java 21 | `update.sh` enforces 17 for the server runtime |
+| Pack name/version | `TerraFirmaGreg-Modern` / `DEV` (upstream label; Git tag carries the release number) | Modpack `pakku.json` |
+| Lock target | `multiplatform`, `lockfile_version 2` | Modpack `pakku-lock.json` |
+| Lock file | `pakku-lock.json` SHA-256 `70b83d718dc76e904d0043e5bda7da9f42837d5199da2988d2a45890a49acc84` | Tag `0.13.8` |
+| Pack manifest | `pakku.json` SHA-256 `8d08beeeb9e30faeff88876eb02b2a86d229d04e98004841f257fe2cfa817300` | Tag `0.13.8` |
 
 The upstream pack does not state a Java patch version or upper bound. The Core source pins Java 17 for its build, while the server starter guidance permits Java 17 and later. No narrower Java claim is made here.
 
@@ -451,26 +462,41 @@ Tracked upstream notice/license files and SHA-256 values:
 
 No root `NOTICE` file was present in either selected source tree. The upstream lock does not provide a complete license/notice inventory for all external project artifacts. Later pack work must preserve the tracked notice files and must not claim that this record is a complete third-party license report.
 
-## Packwiz baseline conversion
+## Import process (current)
 
-The active `pack/` tree is copied from the verified side-reconciled temporary tree `/tmp/tfg-modern-packwiz-sided`. The official CurseForge download is [TerraFirmaGreg-Modern 0.13.7](https://www.curseforge.com/minecraft/modpacks/terrafirmagreg-modern/download/8601844); the matching [GitHub release asset](https://github.com/TerraFirmaGreg-Team/Modpack-Modern/releases/download/0.13.7/TerraFirmaGreg-Modern-0.13.7-curseforge.zip) is `TerraFirmaGreg-Modern-0.13.7-curseforge.zip`, SHA-256 `f9311d72642ad593ceb046fda379b1e9fa6857d4665a7a9c4e2d8d215ffbd4d0`.
+The active `pack/` tree is produced by `scripts/import_tfg_release.py` (uv single-file script, PEP 723 deps: pydantic, tomlkit). Desired state comes from three inputs: the official CurseForge release zip (resolved manifest pairs plus payload overrides), the release tag's `pakku-lock.json` (provider ids, hashes, sides), and `scripts/import-overrides.json` (repo-owned side doctrine). The script phases are scan → plan (pure) → apply (single write boundary); it runs `packwiz refresh` after applying and refuses to apply without `--expected-sha256` verification of the release zip.
 
-The conversion used `github.com/packwiz/packwiz` `v0.0.0-20260218225342-dfd8b68a4796` (Go `1.26.6`). Binary `/Users/lupusanay/go/bin/packwiz`, SHA-256 `bd728ad2d55b41699c1d24bacdb47033717ae779e63bc79262c7cd7149e0fb4f`. Packwiz metadata uses exact project/file IDs and hashes. The twelve CurseForge API-excluded files use verified direct `mediafilez.forgecdn.net` URLs; all other eligible entries retain CurseForge metadata mode.
+Stability contract verified by calibration (planning the previous release against the updated tree must produce zero mutations): unchanged metadata entries stay byte-for-byte identical — display names, url-vs-metadata download representation, and trailing-formatting quirks preserved; identity fields (filename, sha1, side, curseforge ids, route class) are the only rewrite triggers. Payload files sync by digest over seven roots (`config`, `defaultconfigs`, `kubejs`, `tacz`, `mods`, `resourcepacks`, `shaderpacks`); deletions require previous-release membership so local-only files surface as warnings instead of disappearing.
 
-Packwiz initially placed the two official shader metadata files at the pack root. The only layout repair moved those metadata files into `shaderpacks/`, matching their archive paths, while preserving their filenames, CurseForge IDs, and SHA-1 hashes. No duplicate shader destinations were retained.
+Local overlays protected via `--local-retain distanthorizons.pw.toml`: Distant Horizons stays outside upstream scope and survives every import.
 
-The initial reconciled side result was `55` client-only, `20` server-only, and `195` both. Six client-compatibility corrections are now applied: SmartBrainLib, Create: Liquid Fuel, Lithostitched, Block Runner, Immersive Optimization, and TFC Ruins are `both`. The first two are required by client mixins; Lithostitched, Block Runner, and Immersive Optimization provide client-loaded registry/mixin behavior; TFC Ruins supplies worldgen data used by the integrated client server. The active result is `55` client-only, `14` server-only, and `201` both. The `201` both count includes `50` upstream-unspecified records mapped to both by Pakku's null-side default plus these six compatibility corrections. The archive contains `270` exact CurseForge project/file pairs.
+### 0.13.8 re-import result
 
-The active Packwiz pack applies one post-lock compatibility update: TooManyRecipeViewers is upgraded from the selected archive's `0.8.1+mc.20.1` file to CurseForge file `8336855`, `0.9.0+mc.20.1`, SHA-1 `68b17e577526582ac22611d412433022647fc674`. TMRV `0.8.1` crashed on client logout when its JEI plugin manager was uninitialized; the newer file adds the null guard. The resolved lock table retains the original upstream `0.8.1` record for provenance.
+Applied delta against the committed 0.13.7 tree:
 
-Five Pakku-lock-only records are not present in the official archive and were not imported: AE2-Midnight-and-Daybreak, CC: Tweaked, Create: Steam Powered, Extreme sound muffler - (Neo)Forge, and ProbeJS.
+* Metadata: 22 version-bumped mods rewritten in place; added `cubes-without-borders`, `extreme-sound-muffler` (new project replacing nothing present), `seasonhud`; removed `emiaccelerator`. TMRV converged: upstream now ships `0.9.0+mc.20.1` (CurseForge file `8336855`) which equals the prior local override, so that overlay disappeared naturally.
+* Payloads: 1806 updates, 3137 additions, 78 upstream deletions across the override trees; 92 removals classified only because they existed in the 0.13.7 zip.
+* Sides: `57` client-only metas, `14` server-only, `197` both-side mods, `5` resource/shader packs, retaining the six documented compatibility corrections through `scripts/import-overrides.json`.
+* Provider skew adoptions (see below): `arborfirmacraft`, `immediatelyfast`, `iris-shader-folder`.
+
+### Provider-skew doctrine
+
+Upstream's CurseForge and Modrinth records sometimes disagree within one release and the shipped artifacts contradict each other (for 0.13.8 the official serverpack carries `afc-1.0.23` while its own manifest blesses the stale `1.0.22`). Doctrine: the newest published artifact wins regardless of provider; when the winner is a Modrinth record the metafile is emitted as direct-url with an `[update.modrinth]` block. Every adoption prints an explicit note during planning, so divergence from official assets remains auditable.
+
+### Boot verification (isolated smoke)
+
+A dedicated Forge `47.4.13` / Java 17 / headless server was assembled from this exact tree through the production pathway (`packwiz-installer-bootstrap -s server` against a local HTTP mirror; 16,523 items, all hashes verified), then booted with a fresh world: reached `Done (2.856s)`; KubeJS loaded the rewritten startup scripts; multi-dimension levels generated (`overworld`, `the_nether`, `the_end`, Ad Astra orbit/moon/venus, AE2 spatial); error log contained only benign classes (mixin `minVersion` notices, Forge dist-cleaner stripping client classes). One real defect was caught and fixed here: shipping `afc-1.0.22` (manifest-blessed) crashed Create advancement registration (`Registry entry not present: create:copper_backtank`); the skew adoption resolved it.
+
+### Known exclusions
+
+Five Pakku-lock-only records remain outside the manifest and are skipped with a note: ProbeJS by design (dev tooling, `export: false` upstream). The historical direct-url representation for twelve API-excluded files is preserved byte-stably across imports.
 
 ## Gaps and ambiguity
 
-- The upstream release is a Pakku distribution, not a Packwiz pack. No Packwiz metadata or Packwiz hashes are inferred here.
-- The selected release's `pakku.json` says `version=DEV`, while Git tag `0.13.7` and the changelog identify the release. This is recorded as upstream state, not normalized.
-- The Modpack-Modern default `dev` branch and Core-Modern `dev` branch are newer/different than the selected release tags. They are not mixed into this lock.
-- Java 17 is explicit for the Core build. The pack's server guidance says Java 17 and later but does not pin a patch or maximum. Local Java is unavailable, so runtime compatibility is unverified.
-- Core source tag `0.9.20` matches the locked artifact version, but the published JAR's build provenance is not cryptographically linked to the Git source in the upstream lock.
-- `resourcepacks` and `shaderpacks` are listed as client overrides but are absent in the selected tree. Do not invent or silently add their contents.
+- The upstream release labels itself `version=DEV` inside `pakku.json`; the Git tag is the release identity. Recorded as upstream state, not normalized.
+- Upstream's official artifacts self-disagree under provider skew (release manifest vs shipped jars); the newest-artifact doctrine is applied locally and documented above rather than reconciled upstream.
+- Core source tag `0.9.21` matches the locked artifact version, but the published JAR's build provenance is still not cryptographically linked to the Git source.
+- Client launch behavior (Prism bootstrap pulling 0.13.8) is exercised only through the same installer mechanism as production; interactive client joining remains a manual post-deploy check.
+
+Historical notes about the initial 0.13.7 conversion (manual Pakku-to-Packwiz translation, shader layout repair, side-reconciliation counts) live in the migration commit history; the automated importer replaced them and now owns those behaviors.
 - The external provider alternatives are both recorded where present. Selecting Modrinth versus CurseForge for a future Packwiz translation remains a later-stage decision; this stage does not modify `pack/`.
