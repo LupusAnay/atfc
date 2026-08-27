@@ -1,6 +1,6 @@
-# Auto-TFC
+# atfc
 
-Private Auto-TerraFirmaCraft 1.11.1 for Minecraft 1.18.2, Forge 40.2.9, and Java 17.
+TerraFirmaGreg Modern 0.13.8 for Minecraft 1.20.1, Forge 47.4.13, and Java 17.
 
 `pack/` is the Packwiz source of truth. GitHub Pages publishes it at:
 

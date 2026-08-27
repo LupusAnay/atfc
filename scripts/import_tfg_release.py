@@ -39,14 +39,12 @@ Invariants worth keeping forever:
   * Lock records the release neither references nor ships raw are skipped
     with a note (upstream's export-time exclusions, e.g. ProbeJS).
 
-Usage:
-
   uv run scripts/import_tfg_release.py \
       --zip /tmp/TerraFirmaGreg-Modern-<v>-curseforge.zip \
       --lock /tmp/<tag>/pakku-lock.json \
       --prev-zip /tmp/TerraFirmaGreg-Modern-<prev>-curseforge.zip \
       --release-version <v> \
-      [--expected-sha256 <hex>] [--local-retain tmrv.pw.toml,distanthorizons.pw.toml] \
+      [--expected-sha256 <hex>] [--local-retain distanthorizons.pw.toml] \
       [--check] [--apply]
 
 Modes:
@@ -72,8 +70,7 @@ from dataclasses import dataclass
 from pathlib import Path
 
 import tomlkit
-from pydantic import BaseModel, ConfigDict, Field, ValidationError
-
+from pydantic import BaseModel, ConfigDict, ValidationError
 
 # ---------------------------------------------------------------------------
 # Input schemas (validated at the scan boundary)
@@ -283,21 +280,28 @@ def scan(zip_path: Path, lock_path: Path, prev_zip_path: Path | None, pack_dir: 
     with zipfile.ZipFile(zip_path) as zf:
         manifest = validated(Manifest, json.loads(zf.read("manifest.json")), zip_path)
         release_entries: dict[str, Entry] = {}
-        unexpected_roots: set[str] = set()
+        seen_normed: set[str] = set()
         for info in zf.infolist():
             if info.is_dir():
                 continue
-            parts = Path(info.filename).parts
-            if len(parts) >= 3 and parts[0] == "overrides":
-                root = parts[1]
-                if root not in PAYLOAD_DIRS:
-                    unexpected_roots.add(root)
-                rel = "/".join(parts[1:])
-                release_entries[rel] = Entry(sha256_bytes(zf.read(info)))
-        for root in sorted(unexpected_roots):
-            print(f"WARN: release zip carries unknown override root '{root}/'", file=sys.stderr)
-        if set(PAYLOAD_DIRS) & set(unexpected_roots):
-            raise SystemExit("FATAL: unknown override root overlaps META_DIRS")
+            parts = [p for p in Path(info.filename).parts]
+            if any(p in ("", ".", "..") or p.startswith("/") or ":" in p
+                   for p in parts) or Path(info.filename).is_absolute():
+                raise SystemExit(
+                    f"FATAL: unsafe zip member path {info.filename!r}"
+                )
+            if len(parts) < 3 or parts[0] != "overrides":
+                continue  # manifest.json and non-override members are ignored
+            if parts[1] not in PAYLOAD_DIRS:
+                raise SystemExit(
+                    f"FATAL: zip carries unregistered override root '{parts[1]}/'; "
+                    "extend PAYLOAD_DIRS deliberately if upstream added one"
+                )
+            rel = "/".join(parts[1:])
+            if rel in seen_normed:
+                raise SystemExit(f"FATAL: duplicate zip member resolves to {rel!r}")
+            seen_normed.add(rel)
+            release_entries[rel] = Entry(sha256_bytes(zf.read(info)))
 
     prev_override_rels: frozenset[str] = frozenset()
     if prev_zip_path is not None:
@@ -321,7 +325,7 @@ def scan(zip_path: Path, lock_path: Path, prev_zip_path: Path | None, pack_dir: 
         else:
             current_payloads[rel] = Entry(sha256_file(path))
 
-    pack_version_match = re.search(r'^version = "(.*)"$', (pack_dir / "pack.toml").read_text(), re.M)
+    pack_version_match = re.search(r'^version = "(.*)"$', (pack_dir / "pack.toml").read_text(), re.MULTILINE)
     return ScanRecord(
         lock=lock,
         manifest=manifest,
@@ -595,8 +599,8 @@ def plan_payloads(record: ScanRecord) -> tuple[list[Action], list[Note]]:
     notes: list[Note] = []
 
     with_paths: dict[str, str] = {}  # rel -> zip member path
-    # re-derive zip member paths from the standard layout; scan stored only digests
-    for rel, entry in record.release_entries.items():
+    # Re-derive zip member paths from the standard layout; scan stored only digests.
+    for rel in record.release_entries:
         with_paths[rel] = f"overrides/{rel}"
 
     incoming = set(with_paths)
@@ -648,8 +652,7 @@ def build_plan(record: ScanRecord, version: str,
 
 def apply_plan(plan: ImportPlan, zip_path: Path, pack_dir: Path,
                packwiz: str) -> None:
-    written: list[str] = []
-    deleted: list[str] = []
+    pack_root = pack_dir.resolve()
     with zipfile.ZipFile(zip_path) as zf:
         for action in plan.actions:
             match action:
@@ -659,19 +662,15 @@ def apply_plan(plan: ImportPlan, zip_path: Path, pack_dir: Path,
                     target = pack_dir / rel
                     target.parent.mkdir(parents=True, exist_ok=True)
                     target.write_text(body)
-                    written.append(rel)
                 case DeleteMeta(rel=rel):
                     (pack_dir / rel).unlink(missing_ok=True)
-                    deleted.append(rel)
                 case WritePayload(rel=rel, zip_path=member):
                     target = pack_dir / rel
                     target.parent.mkdir(parents=True, exist_ok=True)
                     target.write_bytes(zf.read(member))
-                    written.append(rel)
                 case DeletePayload(rel=rel):
                     target = pack_dir / rel
                     target.unlink(missing_ok=True)
-                    deleted.append(rel)
                     parent = target.parent
                     while parent != pack_dir:
                         try:
@@ -683,7 +682,18 @@ def apply_plan(plan: ImportPlan, zip_path: Path, pack_dir: Path,
                     pack_toml = pack_dir / "pack.toml"
                     text = pack_toml.read_text()
                     pack_toml.write_text(
-                        re.sub(r'^version = ".*"$', f'version = "{version}"', text, count=1, flags=re.M)
+                        re.sub(r'^version = ".*"$', f'version = "{version}"', text, count=1, flags=re.MULTILINE)
+                    )
+                case _:
+                    raise RuntimeError(f"unhandled plan action: {action!r}")
+        # Every written path must stay inside the pack tree.
+        for action in plan.actions:
+            rel = getattr(action, "rel", None)
+            if rel is not None and isinstance(rel, str):
+                resolved = (pack_dir / rel).resolve()
+                if not resolved.is_relative_to(pack_root):
+                    raise SystemExit(
+                        f"FATAL: planned path escapes the pack directory: {rel!r}"
                     )
     if not plan.mutating:
         return

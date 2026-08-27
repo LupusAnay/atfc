@@ -50,7 +50,7 @@ The upstream pack does not state a Java patch version or upper bound. The Core s
 
 ## Project set and source lock
 
-The manifest declares 88 direct project keys. The lock resolves 275 projects: 263 MOD, 10 RESOURCE_PACK, and 2 SHADER. The lock contains 493 provider file records: 220 Modrinth, 272 CurseForge, and 1 GitHub. Hash coverage in the upstream lock is 220 SHA-512, 492 SHA-1, and 272 MD5 records. The provider artifact identity data below is reproduced from the selected commit's `pakku-lock.json`; a dash means that provider is not present for that project. The recorded lock SHA-256 covers the complete upstream JSON, including URLs, dependency IDs, sizes, publication timestamps, and other metadata.
+The manifest declares 88 direct project keys. The lock resolves 276 projects: 264 MOD, 10 RESOURCE_PACK, and 2 SHADER. The lock contains 495 provider file records. The provider artifact identity table below retains the historical capture from the initial `0.13.7` migration for reference; authoritative per-file identities always come from the pinned lock's SHA-256, not this reproduction.
 
 ### Direct manifest project keys
 
@@ -426,16 +426,16 @@ The manifest declares 88 direct project keys. The lock resolves 275 projects: 26
 | libIPN | MOD | CLIENT | libIPN-forge-1.20-4.0.2.jar [id=pdAXmKcS, sha1=3e7c7fcdc037a6ae3d9146e718d87fc83f88f6d5, sha512=be677ed6dd4aa60a67ec1b83c89db8ed7460c34f54e5783df94245b9e0a5af9d3e12ebb322cb04210dfaa6527ad1e555a998931adfd69c5a4c57ac0e4dc15819, md5=-] | libIPN-forge-1.20-4.0.2.jar [id=5208511, sha1=3e7c7fcdc037a6ae3d9146e718d87fc83f88f6d5, sha512=-, md5=ef3a86f4867dba031dd6adef7e45d396] |  |
 The lock's exact required-dependency IDs, URLs, sizes, publication timestamps, and provider metadata remain available by re-fetching the immutable Modpack-Modern commit and checking the recorded lock SHA-256. This table records the artifact names, provider IDs, and all hashes present in each provider record without inventing a second lock format.
 
-The resolved Core entry is:
+This historical 0.13.7 table is retained as migration-era reference only; current identities come from the pinned `0.13.8` lock. Current shipped Core and TFC artifacts:
 
-- Modrinth: `TerraFirmaGreg-Core-Modern-0.9.20.jar`, version/file ID `3205fnl9`, SHA-512 `beaffd2e1be38ac61ab298ad56fa4a30f6355c2c1275e337c6c3fdeb409d7510115e1049031717a89d4d4743b20f555795e3ab0bb4db7fc4c539bed7b79a4962`, SHA-1 `1e4357c528ccda62801445c37b330d778715e45b`.
-- CurseForge: `TerraFirmaGreg-Core-Modern-0.9.20.jar`, file ID `8598368`, SHA-1 `1e4357c528ccda62801445c37b330d778715e45b`, MD5 `2128cc2e19856634852d8bca96394926`.
+- TerraFirmaCraft: CurseForge project `302973`, file `8643732`, `TerraFirmaCraft-Forge-1.20.1-3.2.24.jar`, SHA-1 `e1b65ace1199044a982377d27438c63a4418a744`.
+- TerraFirmaGreg-Core: CurseForge project `513402`, file `8734669`, `TerraFirmaGreg-Core-Modern-0.9.21.jar`, SHA-1 `1645c49e95a4a1534dfc1a71f4402a852ec33fde`. Matching source tag `0.9.21`; the published JAR's build provenance remains unverified against that tag.
 
-The distribution references Core as the locked mod artifact, not as a Git commit. Core tag `0.9.20` is the matching source revision, verified by its `mod_version = 0.9.20` and `minecraft_version = 1.20.1`. The lock does not prove that the published JAR was byte-for-byte built from that source tag.
+Historical resolved Core entry (0.13.7 capture): Modrinth version/file ID `3205fnl9`; CurseForge file ID `8598368`; SHA-1 `1e4357c528ccda62801445c37b330d788715e45b`.
 
 ## Source inputs, overrides, and notices
 
-The selected Modpack-Modern tree records these source subtrees:
+HISTORICAL 0.13.7-capture subtree identities follow; the current 0.13.8 tag trees are: config `c89c1bfa94c526ee671fd8fb362bb72193a9cf62` (575 files), defaultconfigs `f2d92d5b716e474280a3b9cb44a307865002ed8c` (61), kubejs `48aec5e9695fc49c13cc4618e5a570dce67c0dcc` (15,599), tacz `0070586d48606e4bc070cda4cf8d9f6c40177963` (6). The selected Modpack-Modern tree recorded these source subtrees:
 
 | Path | Git tree | Files | Purpose/observation |
 | --- | --- | ---: | --- |
@@ -447,7 +447,7 @@ The selected Modpack-Modern tree records these source subtrees:
 | `resourcepacks` | absent | 0 | Declared by client overrides but absent at this revision |
 | `shaderpacks` | absent | 0 | Declared by client overrides but absent at this revision |
 
-Quest-related source paths are present: `config/ftbquests` (28 files), `defaultconfigs/ftbquests` (1), `kubejs/assets/ftbquests` (16), and `kubejs/server_scripts/ftb_quests` (4). KubeJS has 337 server-script files, 4 client-script files, 127 startup-script files, and 2,820 data files.
+Historical capture statistic for the 0.13.7 tree: KubeJS had 337 server-script, 4 client-script, 127 startup-script, and 2,820 data files. Current 0.13.8-tree script census differs slightly (339 / 4 / 128 / 2,861).
 
 The manifest override rules are exact: base overrides `config`, `defaultconfigs`, `kubejs`, and `tacz`, with the exclusions recorded in upstream `pakku.json`; server overrides are empty; client overrides are `resourcepacks`, `shaderpacks`, `kubejs/assets/**`, `defaultconfigs/tfc-server.toml`, `config/ftbbackups2.json`, and `defaultconfigs/ftbranks/ranks.snbt`; `export_server_side_projects_to_client` is true.
 
@@ -466,7 +466,7 @@ No root `NOTICE` file was present in either selected source tree. The upstream l
 
 The active `pack/` tree is produced by `scripts/import_tfg_release.py` (uv single-file script, PEP 723 deps: pydantic, tomlkit). Desired state comes from three inputs: the official CurseForge release zip (resolved manifest pairs plus payload overrides), the release tag's `pakku-lock.json` (provider ids, hashes, sides), and `scripts/import-overrides.json` (repo-owned side doctrine). The script phases are scan → plan (pure) → apply (single write boundary); it runs `packwiz refresh` after applying and refuses to apply without `--expected-sha256` verification of the release zip.
 
-Stability contract verified by calibration (planning the previous release against the updated tree must produce zero mutations): unchanged metadata entries stay byte-for-byte identical — display names, url-vs-metadata download representation, and trailing-formatting quirks preserved; identity fields (filename, sha1, side, curseforge ids, route class) are the only rewrite triggers. Payload files sync by digest over seven roots (`config`, `defaultconfigs`, `kubejs`, `tacz`, `mods`, `resourcepacks`, `shaderpacks`); deletions require previous-release membership so local-only files surface as warnings instead of disappearing.
+The stability contract is verified by calibration: planning a release against a tree already carrying it must produce zero mutations (verified: KeepMeta 272, writes 0). Unchanged metadata entries stay byte-for-byte identical — display names, url-vs-metadata download representation, and trailing-formatting quirks preserved; identity fields (filename, sha1, side, curseforge ids, route class) are the only rewrite triggers. Payload files sync by digest over seven roots (`config`, `defaultconfigs`, `kubejs`, `tacz`, `mods`, `resourcepacks`, `shaderpacks`); deletions require previous-release membership so local-only files surface as warnings instead of disappearing.
 
 Local overlays protected via `--local-retain distanthorizons.pw.toml`: Distant Horizons stays outside upstream scope and survives every import.
 
@@ -475,13 +475,13 @@ Local overlays protected via `--local-retain distanthorizons.pw.toml`: Distant H
 Applied delta against the committed 0.13.7 tree:
 
 * Metadata: 22 version-bumped mods rewritten in place; added `cubes-without-borders`, `extreme-sound-muffler` (new project replacing nothing present), `seasonhud`; removed `emiaccelerator`. TMRV converged: upstream now ships `0.9.0+mc.20.1` (CurseForge file `8336855`) which equals the prior local override, so that overlay disappeared naturally.
-* Payloads: 1806 updates, 3137 additions, 78 upstream deletions across the override trees; 92 removals classified only because they existed in the 0.13.7 zip.
+* Payloads: 1806 updates, 3137 additions, 78 upstream deletions across the override trees, all classified by previous-release membership.
 * Sides: `57` client-only metas, `14` server-only, `197` both-side mods, `5` resource/shader packs, retaining the six documented compatibility corrections through `scripts/import-overrides.json`.
 * Provider skew adoptions (see below): `arborfirmacraft`, `immediatelyfast`, `iris-shader-folder`.
 
 ### Provider-skew doctrine
 
-Upstream's CurseForge and Modrinth records sometimes disagree within one release and the shipped artifacts contradict each other (for 0.13.8 the official serverpack carries `afc-1.0.23` while its own manifest blesses the stale `1.0.22`). Doctrine: the newest published artifact wins regardless of provider; when the winner is a Modrinth record the metafile is emitted as direct-url with an `[update.modrinth]` block. Every adoption prints an explicit note during planning, so divergence from official assets remains auditable.
+Upstream's CurseForge and Modrinth records sometimes disagree within one release and the shipped artifacts contradict each other (for 0.13.8 the official serverpack carries `afc-1.0.23` while its own manifest blesses the stale `1.0.22`). Doctrine: newest-published artifact wins regardless of provider; Modrinth winners are emitted as direct-url with an `[update.modrinth]` block. Known limitation (audit follow-up): comparison is filename-based, so same-filename/different-hash records are not adopted yet; a planned hardening replaces date-ordering with exact-byte parity against the official serverpack. Every adoption prints an explicit planning note.
 
 ### Boot verification (isolated smoke)
 
@@ -489,7 +489,7 @@ A dedicated Forge `47.4.13` / Java 17 / headless server was assembled from this 
 
 ### Known exclusions
 
-Five Pakku-lock-only records remain outside the manifest and are skipped with a note: ProbeJS by design (dev tooling, `export: false` upstream). The historical direct-url representation for twelve API-excluded files is preserved byte-stably across imports.
+One lock-only record remains outside the manifest and is skipped with a note: ProbeJS (`export: false` upstream). Of the four other records excluded during the original migration, CC:Tweaked and Create: Steam Powered ship raw in both distributions, AE2-Midnight-and-Daybreak ships raw, and Extreme Sound Muffler became a real manifest project in 0.13.8 (imported as metadata). Historical direct-url representation for twelve API-excluded files is preserved byte-stably across imports.
 
 ## Gaps and ambiguity
 
@@ -499,4 +499,3 @@ Five Pakku-lock-only records remain outside the manifest and are skipped with a 
 - Client launch behavior (Prism bootstrap pulling 0.13.8) is exercised only through the same installer mechanism as production; interactive client joining remains a manual post-deploy check.
 
 Historical notes about the initial 0.13.7 conversion (manual Pakku-to-Packwiz translation, shader layout repair, side-reconciliation counts) live in the migration commit history; the automated importer replaced them and now owns those behaviors.
-- The external provider alternatives are both recorded where present. Selecting Modrinth versus CurseForge for a future Packwiz translation remains a later-stage decision; this stage does not modify `pack/`.
