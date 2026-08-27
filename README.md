@@ -1,6 +1,6 @@
 # atfc
 
-TerraFirmaGreg Modern 0.13.8 for Minecraft 1.20.1, Forge 47.4.13, and Java 17.
+TerraFirmaGreg Modern 0.13.8 for Minecraft 1.20.1 and Forge 47.4.13. The server JVM major is declared in `pack.env` (`FORGE_JAVA_MAJOR`, currently 21).
 
 `pack/` is the Packwiz source of truth. GitHub Pages publishes it at:
 

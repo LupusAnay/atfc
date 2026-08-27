@@ -24,6 +24,7 @@ verify_sha256() {
 
 : "${PACK_URL:?pack.env must define PACK_URL}"
 : "${PACKWIZ_BOOTSTRAP_SHA256:?pack.env must define PACKWIZ_BOOTSTRAP_SHA256}"
+: "${FORGE_JAVA_MAJOR:?pack.env must define FORGE_JAVA_MAJOR}"
 [[ "$PACK_URL" == https://* || "$PACK_URL" == http://* ]] || fail 'PACK_URL must start with http:// or https://'
 [[ "$PACK_URL" != *YOUR_GITHUB_OWNER* && "$PACK_URL" != *YOUR_REPOSITORY* ]] || fail 'Configure PACK_URL in pack.env before updating.'
 
@@ -36,10 +37,16 @@ fi
 require_command readlink
 require_command systemctl
 require_command sha256sum
+if [[ -z "${JAVA_BIN:-}" && -n "${JAVA_HOME:-}" && -x "$JAVA_HOME/bin/java" ]]; then
+  JAVA_BIN="$JAVA_HOME/bin/java"
+fi
 JAVA_BIN=${JAVA_BIN:-java}
 require_command "$JAVA_BIN"
 java_version=$({ "$JAVA_BIN" -version 2>&1 || true; } | awk -F '"' '/version/ {print $2; exit}')
-[[ "$java_version" == 17.* ]] || fail "Java 17 is required. Found: ${java_version:-unknown}. Set JAVA_BIN to a Java 17 executable."
+case "$java_version" in
+  "${FORGE_JAVA_MAJOR}".*) ;;
+  *) fail "Java ${FORGE_JAVA_MAJOR} is required (FORGE_JAVA_MAJOR in pack.env). Found: ${java_version:-unknown}. Point JAVA_HOME or JAVA_BIN at a matching JVM." ;;
+esac
 
 [[ -f "$runtime/run.sh" ]] || fail "Forge run.sh is missing. Run ./server/install.sh first."
 bootstrap="$runtime/packwiz-installer-bootstrap.jar"
