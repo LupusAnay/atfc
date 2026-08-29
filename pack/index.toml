@@ -21833,6 +21833,10 @@ file = "kubejs/assets/tfc/models/block/crop/yellow_bell_pepper_age_5.json"
 hash = "aa31d688ecfaec2efc6e4698e805ca93597f0d70cf2e9521acafb89a18dd26a3"
 
 [[files]]
+file = "kubejs/assets/tfc/models/block/crop_cross.json"
+hash = "08df3520d09121a807f0938a8667b631d17f35ea9e209e8db35b47005dddeb96"
+
+[[files]]
 file = "kubejs/assets/tfc/models/block/firepit_grill.json"
 hash = "6bdfe48e583c577b6d21ff9754529e45e4606e95b51fd337991c444d10d17d6f"
 
