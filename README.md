@@ -1,12 +1,14 @@
 # atfc
 
-TerraFirmaGreg Modern 0.13.8 for Minecraft 1.20.1 and Forge 47.4.13. The server JVM major is declared in `pack.env` (`FORGE_JAVA_MAJOR`, currently 21).
+TerraFirmaGreg Modern 0.13.9 for Minecraft 1.20.1 and Forge 47.4.13. The server JVM major is declared in `pack.env` (`FORGE_JAVA_MAJOR`, currently 21).
 
 `pack/` is the Packwiz source of truth. GitHub Pages publishes it at:
 
 ```text
 https://<user>.github.io/<repo>/pack/pack.toml
 ```
+
+`artifacts/` holds immutable repository-hosted binaries referenced by Packwiz metadata, currently the patched Greate 0.0.79 build documented in `docs/tfg-modern-source-lock.md`.
 
 The pack uses normal Distant Horizons distant generation. There is no Chunky or pregenerated-world workflow.
 
@@ -42,6 +44,7 @@ Re-imports of upstream releases are automated:
 uv run scripts/import_tfg_release.py \
     --zip <official-curseforge.zip> --lock <tag>/pakku-lock.json \
     --prev-zip <previous-release.zip> --release-version <v> \
+    --local-retain distanthorizons.pw.toml,greate.pw.toml \
     --expected-sha256 <from-github-release-api>   # dry run; add --apply to write
 ```
 
@@ -54,7 +57,7 @@ cd pack
 packwiz <command>
 cd ..
 make refresh
-git add -A pack scripts docs README.md .gitignore client server Makefile .nojekyll
+git add -A artifacts pack scripts docs README.md .gitignore client server Makefile .nojekyll
 git commit -m 'Update pack'
 git push
 ```

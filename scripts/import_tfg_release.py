@@ -44,7 +44,8 @@ Invariants worth keeping forever:
       --lock /tmp/<tag>/pakku-lock.json \
       --prev-zip /tmp/TerraFirmaGreg-Modern-<prev>-curseforge.zip \
       --release-version <v> \
-      [--expected-sha256 <hex>] [--local-retain distanthorizons.pw.toml] \
+      [--expected-sha256 <hex>] \
+      [--local-retain distanthorizons.pw.toml,greate.pw.toml] \
       [--check] [--apply]
 
 Modes:
@@ -756,7 +757,7 @@ def parse_args(argv: Sequence[str] | None = None) -> argparse.Namespace:
     ap.add_argument("--expected-sha256")
     ap.add_argument("--local-retain", default="",
                     help="comma-separated metafile basenames to leave untouched "
-                         "(local overlays, e.g. distanthorizons.pw.toml)")
+                         "(local overlays, e.g. distanthorizons.pw.toml,greate.pw.toml)")
     ap.add_argument("--pack", type=Path,
                     default=Path(__file__).resolve().parent.parent / "pack")
     ap.add_argument("--overrides",

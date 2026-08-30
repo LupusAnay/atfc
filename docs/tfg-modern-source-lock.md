@@ -6,20 +6,20 @@ This is the provenance record for the official TerraFirmaGreg Modern distributio
 
 | Source | Ref | Commit | Verification |
 | --- | --- | --- | --- |
-| [Modpack-Modern](https://github.com/TerraFirmaGreg-Team/Modpack-Modern) | release tag `0.13.8` | `180d9b6a93d4ce03d8dbdfc70c8da2a7d02599b4` | Tag ref resolves to the recorded commit; release asset digests verified on download |
-| [Core-Modern](https://github.com/TerraFirmaGreg-Team/Core-Modern) | release tag `0.9.21` | `2cf74e65114417b7466fe80910993d0483e0a65f` | Tag ref resolves to the recorded commit |
+| [Modpack-Modern](https://github.com/TerraFirmaGreg-Team/Modpack-Modern) | release tag `0.13.9` | `7b52fc8ccda6fe3c1b4b78fe4d81a0d47b87237f` | Tag ref resolves to the recorded commit; release asset digests verified on download |
+| [Core-Modern](https://github.com/TerraFirmaGreg-Team/Core-Modern) | release tag `0.9.22` | `f9fdeb57ffde2a51f88388a045ba2ec9ac0f3f3f` | Tag ref resolves to the recorded commit |
 
-Capture time: `2026-08-27`.
+Capture time: `2026-08-30`.
 
 The upstream `dev` heads are not selected; the release tags own the pack content.
 
-Re-import inputs for 0.13.8 (SHA-256, from the GitHub release API and local verification):
+Re-import inputs for 0.13.9 (SHA-256, from the GitHub release API and local verification):
 
 | Artifact | SHA-256 |
 | --- | --- |
-| `TerraFirmaGreg-Modern-0.13.8-curseforge.zip` | `4c43cded622deb9b714ec263c37e06428d84d6a82c775ede976bc82796b0550f` |
-| `TerraFirmaGreg-Modern-0.13.8-serverpack.zip` | `d4a20afa59f053fc16e1d82ae42dcd6c284d862d16dff9d07598c69d5c5c0ed6` |
-| tag `pakku-lock.json` | `70b83d718dc76e904d0043e5bda7da9f42837d5199da2988d2a45890a49acc84` |
+| `TerraFirmaGreg-Modern-0.13.9-curseforge.zip` | `cbbe536fb69fd29be02e92ef08a520aeb808b2865dff6370f9707aa6a6a8e00c` |
+| `TerraFirmaGreg-Modern-0.13.9-serverpack.zip` | `67272bb2cef53f19b7c69bcccbd2f1a068fa01976ce9205c172746315f2db0e3` |
+| tag `pakku-lock.json` | `fd65bd9fce4498a475fb6392cae9fdd44613dc63797e93c0a02502d72ae817b4` |
 | tag `pakku.json` | `8d08beeeb9e30faeff88876eb02b2a86d229d04e98004841f257fe2cfa817300` |
 
 The serverpack is used as a parity oracle when provider records disagree.
@@ -32,6 +32,12 @@ These twelve official CurseForge files are API-excluded in the active Packwiz so
 
 Distant Horizons is not part of the selected upstream TFG manifest. The active pack adds the official Modrinth Forge/Fabric artifact `DistantHorizons-3.2.0-b-1.20.1-fabric-forge.jar` (version `FWGxbEM3`, project `uCdwusMi`) for both client and server use. The pinned direct URL is `https://cdn.modrinth.com/data/uCdwusMi/versions/FWGxbEM3/DistantHorizons-3.2.0-b-1.20.1-fabric-forge.jar`; SHA-1 is `5667440fdca4d4543c345c9ba6fda2dda64928ca`. The shared DH configuration uses `distantGeneratorMode = "INTERNAL_SERVER"` so server-side LOD generation is enabled. This is an explicit project addition, not an upstream TFG artifact.
 
+## Patched Greate integration
+
+Upstream 0.13.9 selects CurseForge project `901996`, file `8749587`, `greate-0.0.79.jar`, SHA-1 `0a49283f16e25e2fb82b4d9b1c2c83221912c8de`; the official serverpack copy has SHA-256 `37ad1fe7db1e0e8c9a15245bd1e1248267b774670c4f42426dbd09400a059d98`. Its new `MixinBeltPressingCallbacks` wraps vanilla `ItemStack.shrink(I)V` inside non-remapped Create method `whenItemHeld`, but the inner `@At` omits `remap = true`. Production Create 6.0.8 invokes `ItemStack.m_41774_(I)V`, so the required injection finds no target.
+
+The active pack replaces only that binary with repository-hosted `artifacts/greate-0.0.79-atfc.1.jar` (1,326,559 bytes, SHA-256 `71e7436f1774a4840f5248299f0835cfe6e21550ba11ae9abcc17e50a487b064`) at `https://lupusanay.github.io/atfc/artifacts/greate-0.0.79-atfc.1.jar`. It is built from exact Greate tag `0.0.79`, commit `3cbebe822e12580db8d25cc0eed7989361fa5823`, with Java 17 and the upstream Gradle 8.6 wrapper. The sole source change is recorded in `artifacts/greate-0.0.79-atfc.1.patch` (SHA-256 `b0dc63044d57b4a648b78ff0a3c1e53f6544e468670fe7d44b4b596a615757e3`): retain outer `@WrapOperation(..., remap = false)` and add `remap = true` to the inner vanilla-call `@At`. The resulting refmap maps `ItemStack.shrink(I)V` to `ItemStack.m_41774_(I)V`; embedded mod version remains `0.0.79`. The upstream MIT license is retained beside the artifact as `artifacts/greate-0.0.79-atfc.1.LICENSE.txt` (SHA-256 `ca890a0d688dc56d2adc5ef9c9c7792b2e7c3bf6eaa9c4155c220fd87946c206`). Artifact names are immutable; any later local rebuild must use a new suffix. Upstream-generated `config/crash_assistant/modlist.json` still describes the official Greate filename and hash; it remains byte-identical for release/importer parity and is not a download source.
+
 ## Matrix and pack metadata
 
 | Input | Exact upstream value | Source |
@@ -40,17 +46,17 @@ Distant Horizons is not part of the selected upstream TFG manifest. The active p
 | Loader | Forge `47.4.13` | Modpack `pakku-lock.json`; Core `gradle.properties` |
 | Java build/runtime | Core build property `java_version = 17` | Core tag `gradle.properties` |
 | Java server guidance | “Minecraft 1.20 and later: Java 17 and later” | Modpack `.pakku/server-overrides/server_starter.conf` |
-| Local Java | OpenJDK 17 available at `/usr/lib/jvm/java-17-openjdk`; default toolchain Java 21 | `update.sh` enforces 17 for the server runtime |
+| Local Java | Production server major `21`; Core still builds with Java 17 | `pack.env` declares `FORGE_JAVA_MAJOR=21`; `update.sh` enforces the declared major |
 | Pack name/version | `TerraFirmaGreg-Modern` / `DEV` (upstream label; Git tag carries the release number) | Modpack `pakku.json` |
 | Lock target | `multiplatform`, `lockfile_version 2` | Modpack `pakku-lock.json` |
-| Lock file | `pakku-lock.json` SHA-256 `70b83d718dc76e904d0043e5bda7da9f42837d5199da2988d2a45890a49acc84` | Tag `0.13.8` |
-| Pack manifest | `pakku.json` SHA-256 `8d08beeeb9e30faeff88876eb02b2a86d229d04e98004841f257fe2cfa817300` | Tag `0.13.8` |
+| Lock file | `pakku-lock.json` SHA-256 `fd65bd9fce4498a475fb6392cae9fdd44613dc63797e93c0a02502d72ae817b4` | Tag `0.13.9` |
+| Pack manifest | `pakku.json` SHA-256 `8d08beeeb9e30faeff88876eb02b2a86d229d04e98004841f257fe2cfa817300` | Tag `0.13.9` |
 
 The upstream pack does not state a Java patch version or upper bound. The Core source pins Java 17 for its build, while the server starter guidance permits Java 17 and later. No narrower Java claim is made here.
 
 ## Project set and source lock
 
-The manifest declares 88 direct project keys. The lock resolves 276 projects: 264 MOD, 10 RESOURCE_PACK, and 2 SHADER. The lock contains 495 provider file records. The provider artifact identity table below retains the historical capture from the initial `0.13.7` migration for reference; authoritative per-file identities always come from the pinned lock's SHA-256, not this reproduction.
+The manifest declares 88 direct project keys. The lock resolves 276 projects: 265 MOD, 9 RESOURCE_PACK, and 2 SHADER. The lock contains 494 provider file records. The provider artifact identity table below retains the historical capture from the initial `0.13.7` migration for reference; authoritative per-file identities always come from the pinned lock's SHA-256, not this reproduction.
 
 ### Direct manifest project keys
 
@@ -426,16 +432,16 @@ The manifest declares 88 direct project keys. The lock resolves 276 projects: 26
 | libIPN | MOD | CLIENT | libIPN-forge-1.20-4.0.2.jar [id=pdAXmKcS, sha1=3e7c7fcdc037a6ae3d9146e718d87fc83f88f6d5, sha512=be677ed6dd4aa60a67ec1b83c89db8ed7460c34f54e5783df94245b9e0a5af9d3e12ebb322cb04210dfaa6527ad1e555a998931adfd69c5a4c57ac0e4dc15819, md5=-] | libIPN-forge-1.20-4.0.2.jar [id=5208511, sha1=3e7c7fcdc037a6ae3d9146e718d87fc83f88f6d5, sha512=-, md5=ef3a86f4867dba031dd6adef7e45d396] |  |
 The lock's exact required-dependency IDs, URLs, sizes, publication timestamps, and provider metadata remain available by re-fetching the immutable Modpack-Modern commit and checking the recorded lock SHA-256. This table records the artifact names, provider IDs, and all hashes present in each provider record without inventing a second lock format.
 
-This historical 0.13.7 table is retained as migration-era reference only; current identities come from the pinned `0.13.8` lock. Current shipped Core and TFC artifacts:
+This historical 0.13.7 table is retained as migration-era reference only; current identities come from the pinned `0.13.9` lock. Current shipped Core and TFC artifacts:
 
 - TerraFirmaCraft: CurseForge project `302973`, file `8643732`, `TerraFirmaCraft-Forge-1.20.1-3.2.24.jar`, SHA-1 `e1b65ace1199044a982377d27438c63a4418a744`.
-- TerraFirmaGreg-Core: CurseForge project `513402`, file `8734669`, `TerraFirmaGreg-Core-Modern-0.9.21.jar`, SHA-1 `1645c49e95a4a1534dfc1a71f4402a852ec33fde`. Matching source tag `0.9.21`; the published JAR's build provenance remains unverified against that tag.
+- TerraFirmaGreg-Core: CurseForge project `513402`, file `8758332`, `TerraFirmaGreg-Core-Modern-0.9.22.jar`, SHA-1 `d240bc38ae168d126c9e6275e5b5038a6497f14d`. Matching source tag `0.9.22`; the published JAR's build provenance remains unverified against that tag.
 
 Historical resolved Core entry (0.13.7 capture): Modrinth version/file ID `3205fnl9`; CurseForge file ID `8598368`; SHA-1 `1e4357c528ccda62801445c37b330d788715e45b`.
 
 ## Source inputs, overrides, and notices
 
-HISTORICAL 0.13.7-capture subtree identities follow; the current 0.13.8 tag trees are: config `c89c1bfa94c526ee671fd8fb362bb72193a9cf62` (575 files), defaultconfigs `f2d92d5b716e474280a3b9cb44a307865002ed8c` (61), kubejs `48aec5e9695fc49c13cc4618e5a570dce67c0dcc` (15,599), tacz `0070586d48606e4bc070cda4cf8d9f6c40177963` (6). The selected Modpack-Modern tree recorded these source subtrees:
+HISTORICAL 0.13.7-capture subtree identities follow; the current 0.13.9 tag trees are: config `baa68e8a579bb84eb7fc308299c4c5365cb2720d` (575 files), defaultconfigs `59a022514aa928feb1cf8146e99c2778ebc38762` (61), kubejs `b6b1acffbb76f755e895284cf7d25e313f4d5771` (15,723), tacz `0070586d48606e4bc070cda4cf8d9f6c40177963` (6). The selected Modpack-Modern tree recorded these source subtrees:
 
 | Path | Git tree | Files | Purpose/observation |
 | --- | --- | ---: | --- |
@@ -447,7 +453,7 @@ HISTORICAL 0.13.7-capture subtree identities follow; the current 0.13.8 tag tree
 | `resourcepacks` | absent | 0 | Declared by client overrides but absent at this revision |
 | `shaderpacks` | absent | 0 | Declared by client overrides but absent at this revision |
 
-Historical capture statistic for the 0.13.7 tree: KubeJS had 337 server-script, 4 client-script, 127 startup-script, and 2,820 data files. Current 0.13.8-tree script census differs slightly (339 / 4 / 128 / 2,861).
+Historical capture statistic for the 0.13.7 tree: KubeJS had 337 server-script, 4 client-script, 127 startup-script, and 2,820 data files. Current 0.13.9-tree script census differs (341 / 4 / 128 / 2,887).
 
 The manifest override rules are exact: base overrides `config`, `defaultconfigs`, `kubejs`, and `tacz`, with the exclusions recorded in upstream `pakku.json`; server overrides are empty; client overrides are `resourcepacks`, `shaderpacks`, `kubejs/assets/**`, `defaultconfigs/tfc-server.toml`, `config/ftbbackups2.json`, and `defaultconfigs/ftbranks/ranks.snbt`; `export_server_side_projects_to_client` is true.
 
@@ -459,6 +465,7 @@ Tracked upstream notice/license files and SHA-256 values:
 | Modpack-Modern `tacz/LICENSE.txt` | `ee8790799bd0e807be1058ab1db714b61d5908ded4f8ed3c239f9827c52c1076` |
 | Modpack-Modern `kubejs/assets/betterend/license.txt` | `1e32b4c725bceab7e91e495bf2848d5d48870da0756f7a92a55e5e479c8529ef` |
 | Core-Modern `LICENSE` | `a5681bf9b05db14d86776930017c647ad9e6e56ff6bbcfdf21e5848288dfaf1b` |
+| Greate `0.0.79` MIT license (`artifacts/greate-0.0.79-atfc.1.LICENSE.txt`) | `ca890a0d688dc56d2adc5ef9c9c7792b2e7c3bf6eaa9c4155c220fd87946c206` |
 
 No root `NOTICE` file was present in either selected source tree. The upstream lock does not provide a complete license/notice inventory for all external project artifacts. Later pack work must preserve the tracked notice files and must not claim that this record is a complete third-party license report.
 
@@ -466,9 +473,9 @@ No root `NOTICE` file was present in either selected source tree. The upstream l
 
 The active `pack/` tree is produced by `scripts/import_tfg_release.py` (uv single-file script, PEP 723 deps: pydantic, tomlkit). Desired state comes from three inputs: the official CurseForge release zip (resolved manifest pairs plus payload overrides), the release tag's `pakku-lock.json` (provider ids, hashes, sides), and `scripts/import-overrides.json` (repo-owned side doctrine). The script phases are scan → plan (pure) → apply (single write boundary); it runs `packwiz refresh` after applying and refuses to apply without `--expected-sha256` verification of the release zip.
 
-The stability contract is verified by calibration: planning a release against a tree already carrying it must produce zero mutations (verified: KeepMeta 272, writes 0). Unchanged metadata entries stay byte-for-byte identical — display names, url-vs-metadata download representation, and trailing-formatting quirks preserved; identity fields (filename, sha1, side, curseforge ids, route class) are the only rewrite triggers. Payload files sync by digest over seven roots (`config`, `defaultconfigs`, `kubejs`, `tacz`, `mods`, `resourcepacks`, `shaderpacks`); deletions require previous-release membership so local-only files surface as warnings instead of disappearing.
+The stability contract is verified by calibration: planning a release against a tree already carrying it must produce zero mutations (verified for 0.13.9: KeepMeta 273, writes 0). Unchanged metadata entries stay byte-for-byte identical — display names, url-vs-metadata download representation, and trailing-formatting quirks preserved; identity fields (filename, sha1, side, curseforge ids, route class) are the only rewrite triggers. Payload files sync by digest over seven roots (`config`, `defaultconfigs`, `kubejs`, `tacz`, `mods`, `resourcepacks`, `shaderpacks`); deletions require previous-release membership so local-only files surface as warnings instead of disappearing.
 
-Local overlays protected via `--local-retain distanthorizons.pw.toml`: Distant Horizons stays outside upstream scope and survives every import.
+Local overlays protected via `--local-retain distanthorizons.pw.toml,greate.pw.toml`: Distant Horizons stays outside upstream scope, and the repository-hosted Greate patch is retained until deliberately replaced by a verified upstream correction.
 
 ### 0.13.8 re-import result
 
@@ -479,23 +486,43 @@ Applied delta against the committed 0.13.7 tree:
 * Sides: `57` client-only metas, `14` server-only, `197` both-side mods, `5` resource/shader packs, retaining the six documented compatibility corrections through `scripts/import-overrides.json`.
 * Provider skew adoptions (see below): `arborfirmacraft`, `immediatelyfast`, `iris-shader-folder`.
 
+### 0.13.9 re-import result
+
+Applied delta against the committed 0.13.8 tree:
+
+* Metadata: added `advanced-core-info`; updated Advanced Loot Info, BaguetteLib, Copycats, Create: Steam 'n' Rails, Greate, and TerraFirmaGreg-Core; rolled client-only TMRV back from `0.9.0` to `0.8.1` to fix the high-cardinality recipe-use freeze tracked as upstream issue `#4837`.
+* Payloads: 953 updates, 125 additions, and one upstream deletion. The old raw AE2 Midnight resource pack was replaced by upstream's fixed `midnight_but_it_works.zip`.
+* Local convergence: upstream rewrote all 75 affected crop models to `tfc:block/crop/vexxed_crop_cross` and shipped that base model, so the local `kubejs/assets/tfc/models/block/crop_cross.json` patch was removed after reference validation.
+* Sides: the resulting Packwiz tree has 57 client-only, 14 server-only, and 203 both-side metadata entries, including the Distant Horizons overlay and the six side corrections in `scripts/import-overrides.json`.
+* Artifact parity before local overlays: all eight changed or added CurseForge project/file pairs match the release manifest, and the seven changed server artifacts initially matched the official serverpack byte-for-byte. The active Greate metadata now intentionally selects the repository-hosted correction documented above; client-only TMRV has matching CurseForge and Modrinth SHA-1 `c83ea731d2977c178ac98502a79013bdbba916be`.
+* Calibration: with both local metadata basenames retained, the resulting 0.13.9 tree produces zero writes and zero deletions under importer `--check`; a second `packwiz refresh` is byte-stable.
+* Whitespace audit: plain `git diff --check` reports 12 upstream-owned diagnostics in eight imported KubeJS files. Those bytes are retained to preserve exact release parity and importer idempotence; `git diff --check -- . ':(exclude)pack/kubejs/**'` passes for repository-owned content.
+
 ### Provider-skew doctrine
 
 Upstream's CurseForge and Modrinth records sometimes disagree within one release and the shipped artifacts contradict each other (for 0.13.8 the official serverpack carries `afc-1.0.23` while its own manifest blesses the stale `1.0.22`). Doctrine: newest-published artifact wins regardless of provider; Modrinth winners are emitted as direct-url with an `[update.modrinth]` block. Known limitation (audit follow-up): comparison is filename-based, so same-filename/different-hash records are not adopted yet; a planned hardening replaces date-ordering with exact-byte parity against the official serverpack. Every adoption prints an explicit planning note.
 
-### Boot verification (isolated smoke)
+### 0.13.8 boot verification (isolated smoke)
 
-A dedicated Forge `47.4.13` / Java 17 / headless server was assembled from this exact tree through the production pathway (`packwiz-installer-bootstrap -s server` against a local HTTP mirror; 16,523 items, all hashes verified), then booted with a fresh world: reached `Done (2.856s)`; KubeJS loaded the rewritten startup scripts; multi-dimension levels generated (`overworld`, `the_nether`, `the_end`, Ad Astra orbit/moon/venus, AE2 spatial); error log contained only benign classes (mixin `minVersion` notices, Forge dist-cleaner stripping client classes). One real defect was caught and fixed here: shipping `afc-1.0.22` (manifest-blessed) crashed Create advancement registration (`Registry entry not present: create:copper_backtank`); the skew adoption resolved it.
+A dedicated Forge `47.4.13` / Java 17 / headless server was assembled from that release tree through the production pathway (`packwiz-installer-bootstrap -s server` against a local HTTP mirror; 16,523 items, all hashes verified), then booted with a fresh world: reached `Done (2.856s)`; KubeJS loaded the rewritten startup scripts; multi-dimension levels generated (`overworld`, `the_nether`, `the_end`, Ad Astra orbit/moon/venus, AE2 spatial); error log contained only benign classes (mixin `minVersion` notices, Forge dist-cleaner stripping client classes). One real defect was caught and fixed there: shipping `afc-1.0.22` (manifest-blessed) crashed Create advancement registration (`Registry entry not present: create:copper_backtank`); the skew adoption resolved it.
+
+### 0.13.9 Greate controls and patched verification
+
+The initial 0.13.9 Packwiz server selection synchronized all 16,648 indexed entries under Java 21, installed 214 server mod files including the local Distant Horizons overlay, generated a fresh multi-dimension world, reached `Done (3.073s)`, remained alive during a 90-second dwell, and stopped with exit status 0 after saving every dimension. During that dwell, ModernFix's mixin audit reported `MixinTransformerError` and a critical `(0/1)` injection failure for `greate$whenItemHeld` in `greate.mixin.json:belt.MixinBeltPressingCallbacks`.
+
+An untouched extraction of the verified official 0.13.9 serverpack reproduced the same Greate failure with the upstream launcher, official configuration, no Packwiz conversion, no Distant Horizons, a fresh world, and a 100-second dwell after `Done (2.394s)`. This rules out the importer and local overlay as causes. With only ModernFix's proactive `clear_mixin_classinfo` audit disabled, both an ordinary Create press and a Greate andesite-alloy press could be placed in a forced-loaded chunk under the original and patched jars; placement alone does not invoke the belt callback and is not an impact reproduction.
+
+With the repository-hosted Greate jar and the official audit configuration restored, the official runtime reached `Done`, remained alive for 100 seconds, and logged no `MixinBeltPressingCallbacks` or critical injection failure. The audit advanced to a separate client-only `RenderType` error already latent in the official mod set, so this is not recorded as a globally clean ModernFix audit. The narrow verified result is that the patched Greate refmap applies successfully where the upstream artifact fails. The Packwiz-built runtime with Distant Horizons and the exact patched artifact then loaded all 341 KubeJS server scripts with zero errors or warnings, reached `Done (2.713s)`, retained all 214 selected server mod files, remained alive for 100 seconds, logged no Greate injection failure, and stopped with exit status 0 after saving all dimensions. Because the Pages artifact is not published before commit and push, this smoke replaced only the already-synchronized upstream Greate jar with the hash-pinned local artifact; the hosted download remains a publication-time check. A real belt-processing test, existing-world-copy boot, client join, and the TMRV `U`/right-click reproduction remain pre-deployment gates; TMRV 0.8.1 itself independently matches its pinned SHA-1 and embedded version.
 
 ### Known exclusions
 
-One lock-only record remains outside the manifest and is skipped with a note: ProbeJS (`export: false` upstream). Of the four other records excluded during the original migration, CC:Tweaked and Create: Steam Powered ship raw in both distributions, AE2-Midnight-and-Daybreak ships raw, and Extreme Sound Muffler became a real manifest project in 0.13.8 (imported as metadata). Historical direct-url representation for twelve API-excluded files is preserved byte-stably across imports.
+One lock-only record remains outside the manifest and is skipped with a note: ProbeJS (`export: false` upstream). Greate is a retained local metadata exception that replaces the manifest artifact with the repository-hosted correction above. CC:Tweaked and Create: Steam Powered continue to ship raw in both distributions. The AE2-Midnight-and-Daybreak lock project was removed in 0.13.9, while its fixed replacement `midnight_but_it_works.zip` ships as a raw client override. Extreme Sound Muffler remains a manifest project imported as metadata. Historical direct-url representation for twelve API-excluded files is preserved byte-stably across imports.
 
 ## Gaps and ambiguity
 
 - The upstream release labels itself `version=DEV` inside `pakku.json`; the Git tag is the release identity. Recorded as upstream state, not normalized.
 - Upstream's official artifacts self-disagree under provider skew (release manifest vs shipped jars); the newest-artifact doctrine is applied locally and documented above rather than reconciled upstream.
-- Core source tag `0.9.21` matches the locked artifact version, but the published JAR's build provenance is still not cryptographically linked to the Git source.
-- Client launch behavior (Prism bootstrap pulling 0.13.8) is exercised only through the same installer mechanism as production; interactive client joining remains a manual post-deploy check.
+- Core source tag `0.9.22` matches the locked artifact version, but the published JAR's build provenance is still not cryptographically linked to the Git source.
+- Client launch synchronization, a real Greate belt-processing check, and the interactive TMRV `U`/right-click reproduction remain manual pre-deploy checks.
 
 Historical notes about the initial 0.13.7 conversion (manual Pakku-to-Packwiz translation, shader layout repair, side-reconciliation counts) live in the migration commit history; the automated importer replaced them and now owns those behaviors.
